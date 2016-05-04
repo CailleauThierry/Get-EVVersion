@@ -1,0 +1,478 @@
+﻿04-Dec 21:30:02 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+04-Dec 21:30:02 BKUP-I-04127 job started at 04-Dec-2013 21:30:01 +0000
+04-Dec 21:30:02 BKUP-I-04126 job name /Host-1-EXCH/
+04-Dec 21:30:33 SSET-I-04130 connect to the Vault at vault02.company.com
+04-Dec 21:30:35 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+04-Dec 21:30:37 SSET-I-04755 login as MOUSE/backup_mouse
+04-Dec 21:30:39 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+04-Dec 21:30:40 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+04-Dec 21:30:40 RSYN-I-07711 Alternate Vault found at vault02.company.com
+04-Dec 21:30:40 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+04-Dec 21:30:40 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+04-Dec 21:30:40 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+04-Dec 21:30:45 RSYN-I-04730 deleting synch entry 00000001
+04-Dec 21:30:45 RSYN-I-04181 updating synch entry 00000001
+04-Dec 21:30:46 SSET-I-04131 disconnect from the Vault at 04-Dec-2013 21:30:42 +0000
+04-Dec 21:30:46 SSET-I-04130 connect to the Vault at vault02.company.com
+04-Dec 21:30:48 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+04-Dec 21:30:49 SSET-I-04755 login as MOUSE/backup_mouse
+04-Dec 21:30:50 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+04-Dec 21:30:51 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+04-Dec 21:30:51 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+04-Dec 21:30:51 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+04-Dec 21:30:51 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+04-Dec 21:30:53 RSYN-I-04730 deleting synch entry 00000001
+04-Dec 21:30:53 RSYN-I-04181 updating synch entry 00000001
+04-Dec 21:30:53 RSYN-I-07726 The target Vault for this session is vault02.company.com
+04-Dec 21:32:01 BKUP-I-04315 Vault Version 7.01
+04-Dec 21:32:01 BKUP-I-08464 Maximum path length supported is 31,999 characters
+04-Dec 21:32:01 BKUP-I-08212 Target vault supports delta recreation [VV]
+04-Dec 21:32:01 SSET-I-04132 synching catalog number is 2
+04-Dec 21:32:20 BKUP-I-04698 Backup Encoding: UTF8
+04-Dec 21:32:20 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+04-Dec 21:32:20 EXVS-I-08520 Performing an incremental Exchange backup.
+04-Dec 21:32:20 EXVS-I-08514 Backing up the full exchange server named Host-1.
+04-Dec 21:32:20 EXVS-I-08518 Performing Exchange database validation.
+04-Dec 21:33:01 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+04-Dec 21:33:02 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+04-Dec 21:33:04 VSS -I-08380 writers state:
+04-Dec 21:33:04 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+04-Dec 21:33:05 VSS -I-07787      VSS:
+04-Dec 21:33:05 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+04-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+04-Dec 21:33:05 EXVS-I-08429 Exchange server backup summary:
+04-Dec 21:33:05 EXVS-I-08451 Server data was successfully validated.
+04-Dec 21:33:05 EXVS-I-08431   Error                  Host-1
+04-Dec 21:33:05 EXVS-I-08523   Error                      First Storage Group
+04-Dec 21:33:05 EXVS-I-08527   Error                          Mailbox Database
+04-Dec 21:33:05 EXVS-I-08523   Error                      Second Storage Group
+04-Dec 21:33:05 EXVS-I-08527   Error                          Public Folder Database
+04-Dec 21:33:05 BKUP-E-04706 job will be forced to fail [VV]
+04-Dec 21:33:05 BKUP-F-04110 job failed to complete [VV]
+04-Dec 21:33:06 CAT -E-08056 backup aborted [VV]
+04-Dec 21:33:06 SSET-I-04131 disconnect from the Vault at 04-Dec-2013 21:33:02 +0000
+05-Dec 21:30:05 BKUP-I-04384 ------------------------------------------------------------ [VV]
+05-Dec 21:30:05 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+05-Dec 21:30:05 BKUP-I-04127 job started at 05-Dec-2013 21:30:04 +0000
+05-Dec 21:30:05 BKUP-I-04126 job name /Host-1-EXCH/
+05-Dec 21:30:30 SSET-I-04130 connect to the Vault at vault02.company.com
+05-Dec 21:31:04 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+05-Dec 21:31:05 SSET-I-04755 login as MOUSE/backup_mouse
+05-Dec 21:31:07 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+05-Dec 21:31:11 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+05-Dec 21:31:12 RSYN-I-07711 Alternate Vault found at vault02.company.com
+05-Dec 21:31:12 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+05-Dec 21:31:12 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+05-Dec 21:31:12 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+05-Dec 21:31:21 RSYN-I-04181 updating synch entry 00000001
+05-Dec 21:31:22 SSET-I-04131 disconnect from the Vault at 05-Dec-2013 21:31:15 +0000
+05-Dec 21:31:22 SSET-I-04130 connect to the Vault at vault02.company.com
+05-Dec 21:31:23 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+05-Dec 21:31:25 SSET-I-04755 login as MOUSE/backup_mouse
+05-Dec 21:31:26 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+05-Dec 21:31:27 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+05-Dec 21:31:27 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+05-Dec 21:31:27 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+05-Dec 21:31:27 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+05-Dec 21:31:30 RSYN-I-04181 updating synch entry 00000001
+05-Dec 21:31:30 RSYN-I-07726 The target Vault for this session is vault02.company.com
+05-Dec 21:31:30 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+05-Dec 21:31:30 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+05-Dec 21:31:30 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+05-Dec 21:33:18 BKUP-I-04315 Vault Version 7.01
+05-Dec 21:33:18 BKUP-I-08464 Maximum path length supported is 31,999 characters
+05-Dec 21:33:18 BKUP-I-08212 Target vault supports delta recreation [VV]
+05-Dec 21:33:19 SSET-I-04132 synching catalog number is 2
+05-Dec 21:33:35 BKUP-I-04698 Backup Encoding: UTF8
+05-Dec 21:33:35 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+05-Dec 21:33:35 EXVS-I-08520 Performing an incremental Exchange backup.
+05-Dec 21:33:35 EXVS-I-08514 Backing up the full exchange server named Host-1.
+05-Dec 21:33:35 EXVS-I-08518 Performing Exchange database validation.
+05-Dec 21:34:45 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+05-Dec 21:34:46 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+05-Dec 21:34:48 VSS -I-08380 writers state:
+05-Dec 21:34:48 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+05-Dec 21:34:48 VSS -I-07787      VSS:
+05-Dec 21:34:48 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+05-Dec 21:34:48 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+05-Dec 21:34:48 EXVS-I-08429 Exchange server backup summary:
+05-Dec 21:34:48 EXVS-I-08451 Server data was successfully validated.
+05-Dec 21:34:48 EXVS-I-08431   Error                  Host-1
+05-Dec 21:34:48 EXVS-I-08523   Error                      First Storage Group
+05-Dec 21:34:48 EXVS-I-08527   Error                          Mailbox Database
+05-Dec 21:34:48 EXVS-I-08523   Error                      Second Storage Group
+05-Dec 21:34:48 EXVS-I-08527   Error                          Public Folder Database
+05-Dec 21:34:48 BKUP-E-04706 job will be forced to fail [VV]
+05-Dec 21:34:48 BKUP-F-04110 job failed to complete [VV]
+05-Dec 21:34:49 CAT -E-08056 backup aborted [VV]
+05-Dec 21:34:50 SSET-I-04131 disconnect from the Vault at 05-Dec-2013 21:34:44 +0000
+06-Dec 21:30:07 BKUP-I-04384 ------------------------------------------------------------ [VV]
+06-Dec 21:30:07 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+06-Dec 21:30:07 BKUP-I-04127 job started at 06-Dec-2013 21:30:06 +0000
+06-Dec 21:30:07 BKUP-I-04126 job name /Host-1-EXCH/
+06-Dec 21:30:27 SSET-I-04130 connect to the Vault at vault02.company.com
+06-Dec 21:30:29 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+06-Dec 21:30:30 SSET-I-04755 login as MOUSE/backup_mouse
+06-Dec 21:30:31 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+06-Dec 21:30:31 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+06-Dec 21:30:32 RSYN-I-07711 Alternate Vault found at vault02.company.com
+06-Dec 21:30:32 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+06-Dec 21:30:32 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+06-Dec 21:30:32 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+06-Dec 21:30:36 RSYN-I-04181 updating synch entry 00000001
+06-Dec 21:30:37 SSET-I-04131 disconnect from the Vault at 06-Dec-2013 21:30:36 +0000
+06-Dec 21:30:37 SSET-I-04130 connect to the Vault at vault02.company.com
+06-Dec 21:30:38 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+06-Dec 21:30:39 SSET-I-04755 login as MOUSE/backup_mouse
+06-Dec 21:30:40 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+06-Dec 21:30:40 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+06-Dec 21:30:40 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+06-Dec 21:30:41 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+06-Dec 21:30:41 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+06-Dec 21:30:43 RSYN-I-04181 updating synch entry 00000001
+06-Dec 21:30:43 RSYN-I-07726 The target Vault for this session is vault02.company.com
+06-Dec 21:30:43 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+06-Dec 21:30:43 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+06-Dec 21:30:43 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+06-Dec 21:31:42 BKUP-I-04315 Vault Version 7.01
+06-Dec 21:31:42 BKUP-I-08464 Maximum path length supported is 31,999 characters
+06-Dec 21:31:42 BKUP-I-08212 Target vault supports delta recreation [VV]
+06-Dec 21:31:44 SSET-I-04132 synching catalog number is 2
+06-Dec 21:31:57 BKUP-I-04698 Backup Encoding: UTF8
+06-Dec 21:31:57 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+06-Dec 21:31:57 EXVS-I-08519 Performing a full Exchange backup.
+06-Dec 21:31:57 EXVS-I-08514 Backing up the full exchange server named Host-1.
+06-Dec 21:31:57 EXVS-I-08518 Performing Exchange database validation.
+06-Dec 21:32:50 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+06-Dec 21:32:50 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+06-Dec 21:32:52 VSS -I-08380 writers state:
+06-Dec 21:32:52 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+06-Dec 21:32:53 VSS -I-07787      VSS:
+06-Dec 21:32:53 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+06-Dec 21:32:53 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+06-Dec 21:32:53 EXVS-I-08429 Exchange server backup summary:
+06-Dec 21:32:53 EXVS-I-08451 Server data was successfully validated.
+06-Dec 21:32:53 EXVS-I-08431   Error                  Host-1
+06-Dec 21:32:53 EXVS-I-08523   Error                      First Storage Group
+06-Dec 21:32:53 EXVS-I-08527   Error                          Mailbox Database
+06-Dec 21:32:53 EXVS-I-08523   Error                      Second Storage Group
+06-Dec 21:32:53 EXVS-I-08527   Error                          Public Folder Database
+06-Dec 21:32:53 BKUP-E-04706 job will be forced to fail [VV]
+06-Dec 21:32:53 BKUP-F-04110 job failed to complete [VV]
+06-Dec 21:32:54 CAT -E-08056 backup aborted [VV]
+06-Dec 21:32:54 SSET-I-04131 disconnect from the Vault at 06-Dec-2013 21:32:54 +0000
+07-Dec 21:30:10 BKUP-I-04384 ------------------------------------------------------------ [VV]
+07-Dec 21:30:10 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+07-Dec 21:30:10 BKUP-I-04127 job started at 07-Dec-2013 21:30:09 +0000
+07-Dec 21:30:10 BKUP-I-04126 job name /Host-1-EXCH/
+07-Dec 21:30:29 SSET-I-04130 connect to the Vault at vault02.company.com
+07-Dec 21:30:30 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+07-Dec 21:30:31 SSET-I-04755 login as MOUSE/backup_mouse
+07-Dec 21:30:32 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+07-Dec 21:30:33 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+07-Dec 21:30:33 RSYN-I-07711 Alternate Vault found at vault02.company.com
+07-Dec 21:30:33 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+07-Dec 21:30:34 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+07-Dec 21:30:34 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+07-Dec 21:30:44 RSYN-I-04181 updating synch entry 00000001
+07-Dec 21:30:45 SSET-I-04131 disconnect from the Vault at 07-Dec-2013 21:30:42 +0000
+07-Dec 21:30:45 SSET-I-04130 connect to the Vault at vault02.company.com
+07-Dec 21:30:46 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+07-Dec 21:30:48 SSET-I-04755 login as MOUSE/backup_mouse
+07-Dec 21:30:49 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+07-Dec 21:30:49 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+07-Dec 21:30:49 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+07-Dec 21:30:50 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+07-Dec 21:30:50 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+07-Dec 21:30:52 RSYN-I-04181 updating synch entry 00000001
+07-Dec 21:30:52 RSYN-I-07726 The target Vault for this session is vault02.company.com
+07-Dec 21:30:52 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+07-Dec 21:30:52 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+07-Dec 21:30:52 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+07-Dec 21:32:12 BKUP-I-04315 Vault Version 7.01
+07-Dec 21:32:12 BKUP-I-08464 Maximum path length supported is 31,999 characters
+07-Dec 21:32:12 BKUP-I-08212 Target vault supports delta recreation [VV]
+07-Dec 21:32:15 SSET-I-04132 synching catalog number is 2
+07-Dec 21:32:37 BKUP-I-04698 Backup Encoding: UTF8
+07-Dec 21:32:37 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+07-Dec 21:32:37 EXVS-I-08520 Performing an incremental Exchange backup.
+07-Dec 21:32:37 EXVS-I-08514 Backing up the full exchange server named Host-1.
+07-Dec 21:32:37 EXVS-I-08518 Performing Exchange database validation.
+07-Dec 21:33:02 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+07-Dec 21:33:02 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+07-Dec 21:33:05 VSS -I-08380 writers state:
+07-Dec 21:33:05 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+07-Dec 21:33:05 VSS -I-07787      VSS:
+07-Dec 21:33:05 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+07-Dec 21:33:05 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+07-Dec 21:33:05 EXVS-I-08429 Exchange server backup summary:
+07-Dec 21:33:05 EXVS-I-08451 Server data was successfully validated.
+07-Dec 21:33:05 EXVS-I-08431   Error                  Host-1
+07-Dec 21:33:05 EXVS-I-08523   Error                      First Storage Group
+07-Dec 21:33:05 EXVS-I-08527   Error                          Mailbox Database
+07-Dec 21:33:05 EXVS-I-08523   Error                      Second Storage Group
+07-Dec 21:33:05 EXVS-I-08527   Error                          Public Folder Database
+07-Dec 21:33:05 BKUP-E-04706 job will be forced to fail [VV]
+07-Dec 21:33:05 BKUP-F-04110 job failed to complete [VV]
+07-Dec 21:33:06 CAT -E-08056 backup aborted [VV]
+07-Dec 21:33:07 SSET-I-04131 disconnect from the Vault at 07-Dec-2013 21:33:04 +0000
+09-Dec 21:30:18 BKUP-I-04384 ------------------------------------------------------------ [VV]
+09-Dec 21:30:18 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+09-Dec 21:30:18 BKUP-I-04127 job started at 09-Dec-2013 21:30:16 +0000
+09-Dec 21:30:18 BKUP-I-04126 job name /Host-1-EXCH/
+09-Dec 21:30:44 SSET-I-04130 connect to the Vault at vault02.company.com
+09-Dec 21:30:45 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+09-Dec 21:30:47 SSET-I-04755 login as MOUSE/backup_mouse
+09-Dec 21:30:48 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+09-Dec 21:30:48 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+09-Dec 21:30:49 RSYN-I-07711 Alternate Vault found at vault02.company.com
+09-Dec 21:30:49 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+09-Dec 21:30:49 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+09-Dec 21:30:49 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+09-Dec 21:30:52 RSYN-I-04181 updating synch entry 00000001
+09-Dec 21:30:53 SSET-I-04131 disconnect from the Vault at 09-Dec-2013 21:30:51 +0000
+09-Dec 21:30:53 SSET-I-04130 connect to the Vault at vault02.company.com
+09-Dec 21:30:55 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+09-Dec 21:30:56 SSET-I-04755 login as MOUSE/backup_mouse
+09-Dec 21:30:58 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+09-Dec 21:30:58 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+09-Dec 21:30:58 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+09-Dec 21:30:59 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+09-Dec 21:30:59 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+09-Dec 21:31:00 RSYN-I-04181 updating synch entry 00000001
+09-Dec 21:31:00 RSYN-I-07726 The target Vault for this session is vault02.company.com
+09-Dec 21:31:00 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+09-Dec 21:31:00 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+09-Dec 21:31:00 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+09-Dec 21:33:03 BKUP-I-04315 Vault Version 7.01
+09-Dec 21:33:03 BKUP-I-08464 Maximum path length supported is 31,999 characters
+09-Dec 21:33:03 BKUP-I-08212 Target vault supports delta recreation [VV]
+09-Dec 21:33:21 SSET-I-04132 synching catalog number is 2
+09-Dec 21:33:36 BKUP-I-04698 Backup Encoding: UTF8
+09-Dec 21:33:36 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+09-Dec 21:33:36 EXVS-I-08520 Performing an incremental Exchange backup.
+09-Dec 21:33:36 EXVS-I-08514 Backing up the full exchange server named Host-1.
+09-Dec 21:33:36 EXVS-I-08518 Performing Exchange database validation.
+09-Dec 21:34:28 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+09-Dec 21:34:28 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+09-Dec 21:34:30 VSS -I-08380 writers state:
+09-Dec 21:34:30 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+09-Dec 21:34:32 VSS -I-07787      VSS:
+09-Dec 21:34:32 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+09-Dec 21:34:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+09-Dec 21:34:32 EXVS-I-08429 Exchange server backup summary:
+09-Dec 21:34:32 EXVS-I-08451 Server data was successfully validated.
+09-Dec 21:34:32 EXVS-I-08431   Error                  Host-1
+09-Dec 21:34:32 EXVS-I-08523   Error                      First Storage Group
+09-Dec 21:34:32 EXVS-I-08527   Error                          Mailbox Database
+09-Dec 21:34:32 EXVS-I-08523   Error                      Second Storage Group
+09-Dec 21:34:32 EXVS-I-08527   Error                          Public Folder Database
+09-Dec 21:34:32 BKUP-E-04706 job will be forced to fail [VV]
+09-Dec 21:34:32 BKUP-F-04110 job failed to complete [VV]
+09-Dec 21:34:33 CAT -E-08056 backup aborted [VV]
+09-Dec 21:34:35 SSET-I-04131 disconnect from the Vault at 09-Dec-2013 21:34:33 +0000
+10-Dec 21:30:21 BKUP-I-04384 ------------------------------------------------------------ [VV]
+10-Dec 21:30:21 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+10-Dec 21:30:21 BKUP-I-04127 job started at 10-Dec-2013 21:30:20 +0000
+10-Dec 21:30:21 BKUP-I-04126 job name /Host-1-EXCH/
+10-Dec 21:30:45 SSET-I-04130 connect to the Vault at vault02.company.com
+10-Dec 21:30:46 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+10-Dec 21:30:47 SSET-I-04755 login as MOUSE/backup_mouse
+10-Dec 21:30:49 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+10-Dec 21:30:49 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+10-Dec 21:30:50 RSYN-I-07711 Alternate Vault found at vault02.company.com
+10-Dec 21:30:50 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+10-Dec 21:30:51 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+10-Dec 21:30:51 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+10-Dec 21:30:55 RSYN-I-04181 updating synch entry 00000001
+10-Dec 21:30:56 SSET-I-04131 disconnect from the Vault at 10-Dec-2013 21:30:53 +0000
+10-Dec 21:30:56 SSET-I-04130 connect to the Vault at vault02.company.com
+10-Dec 21:30:57 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+10-Dec 21:30:59 SSET-I-04755 login as MOUSE/backup_mouse
+10-Dec 21:31:00 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+10-Dec 21:31:01 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+10-Dec 21:31:01 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+10-Dec 21:31:02 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+10-Dec 21:31:02 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+10-Dec 21:31:04 RSYN-I-04181 updating synch entry 00000001
+10-Dec 21:31:04 RSYN-I-07726 The target Vault for this session is vault02.company.com
+10-Dec 21:31:04 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+10-Dec 21:31:04 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+10-Dec 21:31:04 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+10-Dec 21:32:24 BKUP-I-04315 Vault Version 7.01
+10-Dec 21:32:24 BKUP-I-08464 Maximum path length supported is 31,999 characters
+10-Dec 21:32:24 BKUP-I-08212 Target vault supports delta recreation [VV]
+10-Dec 21:32:26 SSET-I-04132 synching catalog number is 2
+10-Dec 21:32:41 BKUP-I-04698 Backup Encoding: UTF8
+10-Dec 21:32:41 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+10-Dec 21:32:41 EXVS-I-08520 Performing an incremental Exchange backup.
+10-Dec 21:32:41 EXVS-I-08514 Backing up the full exchange server named Host-1.
+10-Dec 21:32:41 EXVS-I-08518 Performing Exchange database validation.
+10-Dec 21:33:20 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+10-Dec 21:33:20 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+10-Dec 21:33:22 VSS -I-08380 writers state:
+10-Dec 21:33:23 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+10-Dec 21:33:32 VSS -I-07787      VSS:
+10-Dec 21:33:32 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+10-Dec 21:33:32 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+10-Dec 21:33:32 EXVS-I-08429 Exchange server backup summary:
+10-Dec 21:33:32 EXVS-I-08451 Server data was successfully validated.
+10-Dec 21:33:32 EXVS-I-08431   Error                  Host-1
+10-Dec 21:33:32 EXVS-I-08523   Error                      First Storage Group
+10-Dec 21:33:32 EXVS-I-08527   Error                          Mailbox Database
+10-Dec 21:33:32 EXVS-I-08523   Error                      Second Storage Group
+10-Dec 21:33:32 EXVS-I-08527   Error                          Public Folder Database
+10-Dec 21:33:32 BKUP-E-04706 job will be forced to fail [VV]
+10-Dec 21:33:32 BKUP-F-04110 job failed to complete [VV]
+10-Dec 21:33:33 CAT -E-08056 backup aborted [VV]
+10-Dec 21:33:41 SSET-I-04131 disconnect from the Vault at 10-Dec-2013 21:33:38 +0000
+11-Dec 21:30:26 BKUP-I-04384 ------------------------------------------------------------ [VV]
+11-Dec 21:30:26 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+11-Dec 21:30:26 BKUP-I-04127 job started at 11-Dec-2013 21:30:25 +0000
+11-Dec 21:30:26 BKUP-I-04126 job name /Host-1-EXCH/
+11-Dec 21:30:48 SSET-I-04130 connect to the Vault at vault02.company.com
+11-Dec 21:30:49 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+11-Dec 21:30:50 SSET-I-04755 login as MOUSE/backup_mouse
+11-Dec 21:30:52 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+11-Dec 21:30:53 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+11-Dec 21:30:54 RSYN-I-07711 Alternate Vault found at vault02.company.com
+11-Dec 21:30:54 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+11-Dec 21:30:55 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+11-Dec 21:30:55 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+11-Dec 21:30:58 RSYN-I-04181 updating synch entry 00000001
+11-Dec 21:30:59 SSET-I-04131 disconnect from the Vault at 11-Dec-2013 21:30:53 +0000
+11-Dec 21:30:59 SSET-I-04130 connect to the Vault at vault02.company.com
+11-Dec 21:31:00 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+11-Dec 21:31:02 SSET-I-04755 login as MOUSE/backup_mouse
+11-Dec 21:31:04 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+11-Dec 21:31:04 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+11-Dec 21:31:04 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+11-Dec 21:31:04 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+11-Dec 21:31:04 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+11-Dec 21:31:06 RSYN-I-04181 updating synch entry 00000001
+11-Dec 21:31:06 RSYN-I-07726 The target Vault for this session is vault02.company.com
+11-Dec 21:31:06 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+11-Dec 21:31:06 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+11-Dec 21:31:06 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+11-Dec 21:32:02 BKUP-I-04315 Vault Version 7.01
+11-Dec 21:32:02 BKUP-I-08464 Maximum path length supported is 31,999 characters
+11-Dec 21:32:02 BKUP-I-08212 Target vault supports delta recreation [VV]
+11-Dec 21:32:04 SSET-I-04132 synching catalog number is 2
+11-Dec 21:32:22 BKUP-I-04698 Backup Encoding: UTF8
+11-Dec 21:32:22 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+11-Dec 21:32:22 EXVS-I-08520 Performing an incremental Exchange backup.
+11-Dec 21:32:22 EXVS-I-08514 Backing up the full exchange server named Host-1.
+11-Dec 21:32:22 EXVS-I-08518 Performing Exchange database validation.
+11-Dec 21:32:54 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+11-Dec 21:32:54 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+11-Dec 21:32:56 VSS -I-08380 writers state:
+11-Dec 21:32:56 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+11-Dec 21:32:57 VSS -I-07787      VSS:
+11-Dec 21:32:57 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+11-Dec 21:32:57 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+11-Dec 21:32:57 EXVS-I-08429 Exchange server backup summary:
+11-Dec 21:32:57 EXVS-I-08451 Server data was successfully validated.
+11-Dec 21:32:57 EXVS-I-08431   Error                  Host-1
+11-Dec 21:32:57 EXVS-I-08523   Error                      First Storage Group
+11-Dec 21:32:57 EXVS-I-08527   Error                          Mailbox Database
+11-Dec 21:32:57 EXVS-I-08523   Error                      Second Storage Group
+11-Dec 21:32:57 EXVS-I-08527   Error                          Public Folder Database
+11-Dec 21:32:57 BKUP-E-04706 job will be forced to fail [VV]
+11-Dec 21:32:57 BKUP-F-04110 job failed to complete [VV]
+11-Dec 21:32:58 CAT -E-08056 backup aborted [VV]
+11-Dec 21:32:59 SSET-I-04131 disconnect from the Vault at 11-Dec-2013 21:32:53 +0000
+12-Dec 21:30:30 BKUP-I-04384 ------------------------------------------------------------ [VV]
+12-Dec 21:30:30 BKUP-I-04314 Agent Version 7.24.3120 Oct 24 2013 01:29:17
+12-Dec 21:30:30 BKUP-I-04127 job started at 12-Dec-2013 21:30:29 +0000
+12-Dec 21:30:30 BKUP-I-04126 job name /Host-1-EXCH/
+12-Dec 21:30:50 SSET-I-04130 connect to the Vault at vault02.company.com
+12-Dec 21:31:05 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+12-Dec 21:31:06 SSET-I-04755 login as MOUSE/backup_mouse
+12-Dec 21:31:07 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+12-Dec 21:31:12 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+12-Dec 21:31:12 RSYN-I-07711 Alternate Vault found at vault02.company.com
+12-Dec 21:31:13 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+12-Dec 21:31:13 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+12-Dec 21:31:13 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+12-Dec 21:31:18 RSYN-I-04181 updating synch entry 00000001
+12-Dec 21:31:19 SSET-I-04131 disconnect from the Vault at 12-Dec-2013 21:31:11 +0000
+12-Dec 21:31:19 SSET-I-04130 connect to the Vault at vault02.company.com
+12-Dec 21:31:21 SSET-I-04748 Connection to the Vault is using AES encryption [VV]
+12-Dec 21:31:22 SSET-I-04755 login as MOUSE/backup_mouse
+12-Dec 21:31:23 RSYN-I-07721 The Vault at vault02.company.com supports Logical Vault Replication.
+12-Dec 21:31:24 RSYN-I-08870 The Vault at vault02.company.com has accepted the operation.
+12-Dec 21:31:24 UTIL-I-05210 Computer information: dn=Host, hn=Host-1, ip=192.168.1.1, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a [VV]
+12-Dec 21:31:24 UTIL-I-05211 Job information: tn=Host-1-EXCH, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484 [VV]
+12-Dec 21:31:24 UTIL-I-05212 Original job information: tn=Host-1-EXCH, cid=9c269aa4-ee11-491c-956e-b076a507719a
+12-Dec 21:31:25 RSYN-I-04181 updating synch entry 00000001
+12-Dec 21:31:25 RSYN-I-07726 The target Vault for this session is vault02.company.com
+12-Dec 21:31:25 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.CAT
+12-Dec 21:31:25 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTA
+12-Dec 21:31:25 RSYN-I-04180 deleting C:\Program Files\EVault Software\Agent\Host-1-EXCH\00000002.DTX
+12-Dec 21:32:37 BKUP-I-04315 Vault Version 7.01
+12-Dec 21:32:37 BKUP-I-08464 Maximum path length supported is 31,999 characters
+12-Dec 21:32:37 BKUP-I-08212 Target vault supports delta recreation [VV]
+12-Dec 21:32:39 SSET-I-04132 synching catalog number is 2
+12-Dec 21:32:53 BKUP-I-04698 Backup Encoding: UTF8
+12-Dec 21:32:53 EXVS-I-08512 Backing up Exchange (version 8.1 (Build 30240.6)) configured for standalone operation from the active database copies.
+12-Dec 21:32:53 EXVS-I-08520 Performing an incremental Exchange backup.
+12-Dec 21:32:53 EXVS-I-08514 Backing up the full exchange server named Host-1.
+12-Dec 21:32:53 EXVS-I-08518 Performing Exchange database validation.
+12-Dec 21:33:43 VSS -I-09677 <Volume{249511a8-88dd-11de-9c36-806e6f6e6963}> <C> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+12-Dec 21:33:43 VSS -I-09677 <Volume{6495ae9a-88ec-11de-82d5-001ec9f5bd1a}> <E> is added to snapshot using "B5946137-7B9F-4925-AF80-51ABD60B20D5" provider
+12-Dec 21:33:45 VSS -I-08380 writers state:
+12-Dec 21:33:45 VSS -W-08381      writer Microsoft Exchange Writer (Exchange Information Store): <STABLE> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)> <FAILED_AT_PREPARE_SNAPSHOT(0x800423f3 - VSS_E_WRITERERROR_RETRYABLE)>
+12-Dec 21:33:46 VSS -I-07787      VSS:
+12-Dec 21:33:46 VSS -I-05593           components from Microsoft Exchange Writer (Exchange Information Store):
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\e1f91eb9-0a0b-46d3-8cdb-c7d01bb13d5f
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\1c52ee69-abb1-4ff6-a942-7bd8cae4c750\Logs
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\04cc60e4-e751-41cb-acc4-714ef58d4755
+12-Dec 21:33:46 VSS -W-08734                status: failed                     - Microsoft Exchange Server\Microsoft Information Store\Host-1\66a6cd67-6a86-4528-b907-50eedd81767b\Logs
+12-Dec 21:33:46 EXVS-I-08429 Exchange server backup summary:
+12-Dec 21:33:46 EXVS-I-08451 Server data was successfully validated.
+12-Dec 21:33:46 EXVS-I-08431   Error                  Host-1
+12-Dec 21:33:46 EXVS-I-08523   Error                      First Storage Group
+12-Dec 21:33:46 EXVS-I-08527   Error                          Mailbox Database
+12-Dec 21:33:46 EXVS-I-08523   Error                      Second Storage Group
+12-Dec 21:33:46 EXVS-I-08527   Error                          Public Folder Database
+12-Dec 21:33:46 BKUP-E-04706 job will be forced to fail [VV]
+12-Dec 21:33:46 BKUP-F-04110 job failed to complete [VV]
+12-Dec 21:33:47 CAT -E-08056 backup aborted [VV]
+12-Dec 21:33:48 SSET-I-04131 disconnect from the Vault at 12-Dec-2013 21:33:41 +0000

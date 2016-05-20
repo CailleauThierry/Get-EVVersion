@@ -1,7 +1,7 @@
 ﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_04.ps1" for loop to increment through array
 
 param ( 
-[Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\BACKUP.XLOG.log' # since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$true)][string] $InputFile = 'C:\posh\input\BACKUP.XLOG.log' # since I use the same file for testing , I should check against an expected output result
 )
 
 # param works as a script but does not come up when an executable. 

@@ -3,7 +3,7 @@
 		Description still to come
 
 	.DESCRIPTION
-		A detailed description of the function.
+		Get-EVVersion08_07.ps1 base on working Get-EVVersion08_06.ps1. I am compiling as an exe with ps2exe_force_wait.ps1
 
 	.PARAMETER  ParameterA
 		The description of the ParameterA parameter.
@@ -38,7 +38,7 @@
 #processing "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_06.ps1" for handling error on passing .txt files
 
 param ( 
-[Parameter(mandatory=$true)][string] $InputFile = 'C:\posh\input\BACKUP.XLOG.log' # since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$true)][string] $InputFile # = 'C:\posh\input\BACKUP.XLOG.log'  since I use the same file for testing , I should check against an expected output result
 )
 
 # param works as a script but does not come up when an executable. 

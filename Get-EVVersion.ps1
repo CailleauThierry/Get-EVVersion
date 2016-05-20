@@ -1,22 +1,16 @@
-﻿# in progress (works partially) to change function to take i/p from the clipboard
-# partial result
-#
-#
-#AgentVersion : -.-
-#VaultVersion : 
-#               
-#HostName     : Host-1
-#IPAddress    : 192.168.1.1
-#TaskName     : Host-1-EXCH
+﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_01.ps1" to get tid and paste results to clipboard
+
+param ( 
+[Parameter(mandatory=$true)][string] $InputFile
+)
+
+# param works as a script but does not come up when an executable. 
+# That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-#Work in progress to investiage :  Get-EVVersion03_1.ps1 highlights a Select-String better approach
-# I did a focus in Get-EVVersion03_1.ps1 to Get AgentVersion working
-# Aslo a good idea would simply take the clipboard input and then launch exe to paste back into clipboard
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion05.ps1" based on working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion04.ps1" (- some Comments) with results:
-#LogPath                  AgentVersion             VaultVersion             HostName                 IPAddress                TaskName       
-#-------                  ------------             ------------             --------                 ---------                --------       
-#C:\hsgTest\input\BACK... 7.24.3120                7.01                     Host-1                 192.168.1.1              Host-1-EXCH 
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_01.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion04_01.ps1" (- some Comments) with results:
+
 
 
 #beginning of#################################################################
@@ -90,99 +84,35 @@ end
 ##
 ##############################################################################
 
-#beginning of#################################################################
-##
-## Get-Clipboard
-##
-## From Windows PowerShell Cookbook (O'Reilly)
-## by Lee Holmes (http://www.leeholmes.com/guide)
-##
-##############################################################################
-function Get-Clipboard([switch] $Lines) {
-	if($Lines) {
-		$cmd = {
-			Add-Type -Assembly PresentationCore
-			[Windows.Clipboard]::GetText() -replace "`r", '' -split "`n"
-		}
-	} else {
-		$cmd = {
-			Add-Type -Assembly PresentationCore
-			[Windows.Clipboard]::GetText()
-		}
-	}
-	if([threading.thread]::CurrentThread.GetApartmentState() -eq 'MTA') {
-		& powershell -Sta -Command $cmd
-	} else {
-		& $cmd
-	}
-}
 
-
-#end of#######################################################################
-##
-## Get-Clipboard
-##
-## From Windows PowerShell Cookbook (O'Reilly)
-## by Lee Holmes (http://www.leeholmes.com/guide)
-##
-##############################################################################
-
-$log1 = Get-Clipboard
-
-#$log1
-
-#opened "C:\hsgTest\projects\zip\1\zipoutput\Host-1-EXCH\BACKUP.XLOG" saved as clear text in "C:\hsgTest\input\BACKUP_filtered.XLOG"
 # $log1 for Get-Content of it$log1 = Get-Content C:\hsgTest\input\BACKUP_filtered.XLOG
 
-$AgentLog = New-Object PSObject
-$AgentLog | Add-Member NoteProperty AgentVersion "-.-"
-$AgentLog | Add-Member NoteProperty VaultVersion "-.-"
-$AgentLog | Add-Member NoteProperty HostName "-"
-$AgentLog | Add-Member NoteProperty IPAddress "-.-.-.-"
-$AgentLog | Add-Member NoteProperty TaskName "-"
+$VaultLog = New-Object PSObject
+$VaultLog | Add-Member NoteProperty VaultName "-"
+$VaultLog | Add-Member NoteProperty LogPath "-"
+$VaultLog | Add-Member NoteProperty LogName "-"
+$VaultLog | Add-Member NoteProperty TaskID "(-)"
 
-$a = $log1 | Where-Object {$_.Contains(" Vault Version ") -eq $true} | Sort-Object -Unique | ForEach-Object {$_.Split(' Vault Version ')} 
-$AgentLog.VaultVersion = $a[-1]
+$log1 = Get-Content $InputFile
 
-# one difference is there is no need to split the Vault Version line
+$VaultLog.LogPath = $log1[1].PSPath
 
-$a = $log1 | Where-Object {$_.Contains(" Agent Version ") -eq $true} | ForEach-Object {$_.Split(' ')} 
+                                                                                                                                          
+$log1[1].PSChildName
+$a = $log1 | Where-Object {$_ -match ("tid= ") } | ForEach-Object {$_.Split(" ")}
 
-$b = $a | Select-string -Pattern "Version" -Context 0,1 | Select-Object -Unique
+$VaultLog.TaskID = $a[-1]
 
-#$b
-# Using Select-String was more efficient but extracting the result as a string took a bit of digging explaining the "$b.Context.PostContext)[0]"
-
-$AgentLog.AgentVersion = ($b.Context.PostContext)[0]
-
-
-#PS C:\windows\system32> $a = $log1 | Where-Object {$_.Contains(" Vault Version ") -eq $true} | Sort-Object -Unique | ForEach-Object {$_.Split(' Vault Version ')} 
-#
-#PS C:\windows\system32> $AgentLog.VaultVersion = $a[-1]
-#PS C:\windows\system32> $AgentLog
-#
-#
-#HostName     : Host-1
-#IPAddress    : 192.168.1.1
-#TaskName     : Host-1-EXCH
-#VaultVersion : 7.01
-#LogPath      : C:\hsgTest\input\BACKUP_filtered.XLOG
-
-$a = $log1 | Where-Object {$_.Contains("hn=") -eq $true} | ForEach-Object {$_.Split(', ')} | Where-Object {$_.Contains("hn=") -eq $true} | Sort-Object -Unique | ForEach-Object {$_.Split('hn=')} 
-
-$AgentLog.HostName = $a[-1]
-
-$a = $log1 | Where-Object {$_.Contains("hn=") -eq $true} | ForEach-Object {$_.Split(', ')} | Where-Object {$_.Contains("ip=") -eq $true} | Sort-Object -Unique | ForEach-Object {$_.Split('ip=')} 
-
-$AgentLog.IPAddress = $a[-1]
-
-$a = $log1 | Where-Object {$_.Contains("tn=") -eq $true} | ForEach-Object {$_.Split(', ')} | Where-Object {$_.Contains("tn=") -eq $true} | Sort-Object -Unique | ForEach-Object {$_.Split('tn=')} 
-$AgentLog.TaskName = $a[-1]
+#$log1[1].PSChildName
+#$a = $log1 | Where-Object {$_ -match ("tid= ") }
+#$b = $a | ForEach-Object {$_.Split(" ")}
+#$VaultLog.TaskID =$b[-1]  
+#(362)
 
 
 # Use case
 # $AgentLog | ft *
-$AgentLog | Set-Clipboard
+$VaultLog | Set-Clipboard
  
 #Once pasted frm clipboard the result is:
 #
@@ -190,8 +120,8 @@ $AgentLog | Set-Clipboard
 #LogPath      : C:\hsgTest\input\BACKUP_filtered.XLOG
 #AgentVersion : 7.24.3120
 #VaultVersion : 7.01
-#HostName     : Host-1
+#HostName     : TMTC-SBS
 #IPAddress    : 192.168.1.1
-#TaskName     : Host-1-EXCH
+#TaskName     : TMTC-SBS-EXCH
 #
 #

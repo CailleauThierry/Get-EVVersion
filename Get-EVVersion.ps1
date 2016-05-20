@@ -1,4 +1,4 @@
-﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_01.ps1" "dot sourcing" the Set-Clipboard_fc.ps1, and streamlining next parameter selection
+﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" "dot sourcing" the Set-Clipboard_fc.ps1, and streamlining next parameter selection
 
 param ( 
 [Parameter(mandatory=$true)][string] $InputFile
@@ -8,8 +8,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_01.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion04_01.ps1" (- some Comments) with results:
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_01.ps1" (- some Comments) with results:
 
 # set Clipboard
 
@@ -19,6 +19,7 @@ param (
 
 $AgentLog = New-Object PSObject
 $AgentLog | Add-Member NoteProperty LogPath "C:\-"
+$AgentLog | Add-Member NoteProperty LogName "-"
 $AgentLog | Add-Member NoteProperty AgentVersion "-.-"
 $AgentLog | Add-Member NoteProperty VaultVersion "-.-"
 $AgentLog | Add-Member NoteProperty HostName "-"
@@ -28,10 +29,11 @@ $AgentLog | Add-Member NoteProperty TaskName "-"
 
 $log1 = Get-Content $InputFile
 
-$AgentLog.LogPath = $log1[0].PSPath
+$AgentLog.LogPath = $log1[1].PSPath
+$AgentLog.LogName = $log1[1].PSChildName
 
 #Agent Version
-$a = $log1 | Where-Object {$_ -match (" Agent Version") } | ForEach-Object {$_.Split(" ")}
+$a = $log1 | Where-Object {$_ -match (" Agent Version") } | ForEach-Object {$_.Split(" ")} | ForEach-Object {$_.Split(" ")}
 
 $i = 0
 foreach ($element in $a){
@@ -42,8 +44,8 @@ foreach ($element in $a){
 }
 
 
-#Vault Version
-$a = $log1 | Where-Object {$_ -match (" Vault Version") } | ForEach-Object {$_.Split(" ")}
+#Vault Version, last "| ForEach-Object {$_.Split(" ")}" is not necessary but help implement the one after catch function
+$a = $log1 | Where-Object {$_ -match (" Vault Version") } | ForEach-Object {$_.Split(" ")} | ForEach-Object {$_.Split(" ")}
 
 $i = 0
 foreach ($element in $a){
@@ -55,7 +57,7 @@ foreach ($element in $a){
 
 
 #AgentHostname
-$a = $log1 | Where-Object {$_ -match (", hn=") } | ForEach-Object {$_.Split("=")} | ForEach-Object {$_.Split(", ")}
+$a = $log1 | Where-Object {$_ -match (", hn=") } | ForEach-Object {$_.Split("=")} | ForEach-Object {$_.Split(", ")}| ForEach-Object {$_.Split(" ")}
 
 $i = 0
 foreach ($element in $a){
@@ -101,4 +103,5 @@ $AgentLog | Set-Clipboard
 #HostName     : Host-1
 #IPAddress    : 192.168.1.1
 #TaskName     : Host-1-EXCH
+#
 #

@@ -1,4 +1,4 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_02.ps1" with input parameter an Agent log in txt format (save as txt from logviewer) and paste results to clipboard
+﻿#in progress "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion07_01.ps1" with input parameter an Agent log in txt format (save as txt from logviewer) and paste results to clipboard
 
 param ( 
 [Parameter(mandatory=$true)][string] $InputFile
@@ -8,8 +8,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_02.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_01.ps1" tid to clipboard
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion07_01.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_02.ps1" tid to clipboard
 
 
 
@@ -98,7 +98,6 @@ $VaultLog | Add-Member NoteProperty AgentVersion "-"
 $VaultLog | Add-Member NoteProperty TaskName "-"
 $VaultLog | Add-Member NoteProperty TaskID "(-)"
 $VaultLog | Add-Member NoteProperty SafesetNumber "-"
-$VaultLog | Add-Member NoteProperty VUID "-"
 
 
 $log1 = Get-Content $InputFile
@@ -120,10 +119,6 @@ foreach ($element in $a){
 		$VaultLog.VaultVersion = $a[$i]
 	}
 }
-
-#VUID
-$a = $log1 | Where-Object {$_ -match ("vid=") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.VUID = $a[-1]
 
 #AgentHostname
 $a = $log1 | Where-Object {$_ -match ("hn = ") } | ForEach-Object {$_.Split(" ")}

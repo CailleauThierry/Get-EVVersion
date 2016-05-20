@@ -1,4 +1,5 @@
-﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" "dot sourcing" the Set-Clipboard_fc.ps1, and streamlining next parameter selection
+﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_03.ps1" "dot sourcing" the Set-Clipboard_fc.ps1, and streamlining next parameter selection. Added "hash tables" for the log's parameter. This will allow later to have the parameters outside of the function (GUI select tool)
+# this illustrate hash table for enumeration
 
 param ( 
 [Parameter(mandatory=$true)][string] $InputFile
@@ -8,8 +9,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_01.ps1" (- some Comments) with results:
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_03.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" (- some Comments) with results:
 
 # set Clipboard
 
@@ -26,65 +27,97 @@ $AgentLog | Add-Member NoteProperty HostName "-"
 $AgentLog | Add-Member NoteProperty IPAddress "-.-.-.-"
 $AgentLog | Add-Member NoteProperty TaskName "-"
 
-
 $log1 = Get-Content $InputFile
 
 $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
 #Agent Version
-$a = $log1 | Where-Object {$_ -match (" Agent Version") } | ForEach-Object {$_.Split(" ")} | ForEach-Object {$_.Split(" ")}
+$AgentVersionKeys = @(
+" Agent Version",
+" ",
+" ",
+"Version"
+)
+
+$a = $log1 | Where-Object {$_ -match ($AgentVersionKeys[0]) } | ForEach-Object {$_.Split($AgentVersionKeys[1])} | ForEach-Object {$_.Split($AgentVersionKeys[2])}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains("Version")){
+	if ($element.Contains($AgentVersionKeys[3])){
 		$AgentLog.AgentVersion = $a[$i]
 	}
 }
 
+#Vault Version
+$VaultVersionKeys = @(
+" Vault Version",
+" ",
+" ",
+"Version"
+)
 
-#Vault Version, last "| ForEach-Object {$_.Split(" ")}" is not necessary but help implement the one after catch function
-$a = $log1 | Where-Object {$_ -match (" Vault Version") } | ForEach-Object {$_.Split(" ")} | ForEach-Object {$_.Split(" ")}
+$a = $log1 | Where-Object {$_ -match ($VaultVersionKeys[0]) } | ForEach-Object {$_.Split($VaultVersionKeys[1])} | ForEach-Object {$_.Split($VaultVersionKeys[2])}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains("Version")){
+	if ($element.Contains($VaultVersionKeys[3])){
 		$AgentLog.VaultVersion = $a[$i]
 	}
 }
 
 
 #AgentHostname
-$a = $log1 | Where-Object {$_ -match (", hn=") } | ForEach-Object {$_.Split("=")} | ForEach-Object {$_.Split(", ")}| ForEach-Object {$_.Split(" ")}
+$HostNameKeys = @(
+", hn=",
+"=",
+", ",
+"hn"
+)
+
+$a = $log1 | Where-Object {$_ -match ($HostNameKeys[0]) } | ForEach-Object {$_.Split($HostNameKeys[1])} | ForEach-Object {$_.Split($HostNameKeys[2])}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains("hn")){
+	if ($element.Contains($HostNameKeys[3])){
 		$AgentLog.HostName = $a[$i]
 	}
 }
 
 #Agent IPAddress
-$a = $log1 | Where-Object {$_ -match (", ip=") } | ForEach-Object {$_.Split("=")} | ForEach-Object {$_.Split(", ")}
+$IPAddressKeys = @(
+", ip=",
+"=",
+", ",
+"ip"
+)
+$a = $log1 | Where-Object {$_ -match ($IPAddressKeys[0]) } | ForEach-Object {$_.Split($IPAddressKeys[1])} | ForEach-Object {$_.Split($IPAddressKeys[2])}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains("ip")){
+	if ($element.Contains($IPAddressKeys[3])){
 		$AgentLog.IPAddress = $a[$i]
 	}
 }
 
 #Agent TaskName
-$a = $log1 | Where-Object {$_ -match (" tn=") } | ForEach-Object {$_.Split("=")} | ForEach-Object {$_.Split(", ")}
+$TaskNameKeys = @(
+" tn=",
+"=",
+", ",
+"tn"
+)
+
+$a = $log1 | Where-Object {$_ -match ($TaskNameKeys[0]) } | ForEach-Object {$_.Split($TaskNameKeys[1])} | ForEach-Object {$_.Split($TaskNameKeys[2])}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains("tn")){
+	if ($element.Contains($TaskNameKeys[3])){
 		$AgentLog.TaskName = $a[$i]
 	}
 }

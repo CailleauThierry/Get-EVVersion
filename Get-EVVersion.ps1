@@ -98,6 +98,7 @@ $VaultLog | Add-Member NoteProperty AgentVersion "-"
 $VaultLog | Add-Member NoteProperty TaskName "-"
 $VaultLog | Add-Member NoteProperty TaskID "(-)"
 $VaultLog | Add-Member NoteProperty SafesetNumber "-"
+$VaultLog | Add-Member NoteProperty VUID "-"
 
 
 $log1 = Get-Content $InputFile
@@ -119,6 +120,10 @@ foreach ($element in $a){
 		$VaultLog.VaultVersion = $a[$i]
 	}
 }
+
+#VUID
+$a = $log1 | Where-Object {$_ -match ("vid=") } | ForEach-Object {$_.Split(" ")}
+$VaultLog.VUID = $a[-1]
 
 #AgentHostname
 $a = $log1 | Where-Object {$_ -match ("hn = ") } | ForEach-Object {$_.Split(" ")}

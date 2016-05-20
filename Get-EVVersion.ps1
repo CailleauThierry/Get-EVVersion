@@ -1,22 +1,24 @@
-﻿# working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_03.ps1" "dot sourcing" the Set-Clipboard_fc.ps1, and streamlining next parameter selection. Added "hash tables" for the log's parameter. This will allow later to have the parameters outside of the function (GUI select tool)
-# this illustrate hash table for enumeration
+﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_04.ps1" for loop to increment through array
 
 param ( 
-[Parameter(mandatory=$true)][string] $InputFile
+[Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\BACKUP.XLOG.log' # since I use the same file for testing , I should check against an expected output result
 )
 
 # param works as a script but does not come up when an executable. 
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_03.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_02.ps1" (- some Comments) with results:
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_04.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_06.ps1" highly optimize Vault log parsing
+
+
 
 # set Clipboard
 
 . C:\posh\projects\Clipboard\Set-Clipboard_fc.ps1
 
-# $log1 for Get-Content of it$log1 = Get-Content C:\hsgTest\input\BACKUP_filtered.XLOG
+
+# $log1 for Get-Content of it $log1 = Get-Content C:\hsgTest\input\Backup-526ABFBB-48AC-29B4.LOG
 
 $AgentLog = New-Object PSObject
 $AgentLog | Add-Member NoteProperty LogPath "C:\-"
@@ -26,115 +28,67 @@ $AgentLog | Add-Member NoteProperty VaultVersion "-.-"
 $AgentLog | Add-Member NoteProperty HostName "-"
 $AgentLog | Add-Member NoteProperty IPAddress "-.-.-.-"
 $AgentLog | Add-Member NoteProperty TaskName "-"
+$AgentLog | Add-Member NoteProperty TaskGUID "-"
+$AgentLog | Add-Member NoteProperty AgentGUID "-"
+$AgentLog | Add-Member NoteProperty VaultGUID "-"
+
+#, vid=4e354d4a-4d7b-49d7-8c9d-11de84e19bff, cid=9c269aa4-ee11-491c-956e-b076a507719a, tid=96336c5c-4aff-4485-a3b0-ca2f31499484
+
 
 $log1 = Get-Content $InputFile
 
 $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
-#Agent Version
-$AgentVersionKeys = @(
-" Agent Version",
-" ",
-" ",
-"Version"
+
+$A0 = @{key0 = " Agent Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "AgentVersion"}
+$A1 = @{key0 = " Vault Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}
+$A2 = @{key0 = ", hn=";key1 = "=";key2 = ", ";key3 = "hn";key4 = "HostName"}
+$A3 = @{key0 = ", ip=";key1 = "=";key2 = ", ";key3 = "ip";key4 = "IPAddress"}
+$A4 = @{key0 = " tn=";key1 = "=";key2 = ", ";key3 = "tn";key4 = "TaskName"}
+$A5 = @{key0 = ", tid=";key1 = "=";key2 = ", ";key3 = "tid";key4 = "TaskGUID"}
+$A6 = @{key0 = ", cid=";key1 = "=";key2 = ", ";key3 = "cid";key4 = "AgentGUID"}
+$A7 = @{key0 = ", vid=";key1 = "=";key2 = ", ";key3 = "vid";key4 = "VaultGUID"}
+
+
+
+
+$Keys = @(
+$A0,
+$A1,
+$A2,
+$A3,
+$A4,
+$A5,
+$A6,
+$A7
 )
 
-$a = $log1 | Where-Object {$_ -match ($AgentVersionKeys[0]) } | ForEach-Object {$_.Split($AgentVersionKeys[1])} | ForEach-Object {$_.Split($AgentVersionKeys[2])}
+for($counter = 0; $counter -lt $Keys.Length; $counter++){
+	$a = $log1 | Where-Object {$_ -match $Keys[$counter].key0 } | ForEach-Object {$_.Split($Keys[$counter].key1)} | ForEach-Object {$_.Split($Keys[$counter].key2)}
 
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($AgentVersionKeys[3])){
-		$AgentLog.AgentVersion = $a[$i]
+	$i = 0
+	foreach ($element in $a){
+		$i++
+		if ($element.Contains($Keys[$counter].key3)){
+			$temp = $Keys[$counter].key4
+			$AgentLog."$temp" = $a[$i]
+		}
 	}
 }
-
-#Vault Version
-$VaultVersionKeys = @(
-" Vault Version",
-" ",
-" ",
-"Version"
-)
-
-$a = $log1 | Where-Object {$_ -match ($VaultVersionKeys[0]) } | ForEach-Object {$_.Split($VaultVersionKeys[1])} | ForEach-Object {$_.Split($VaultVersionKeys[2])}
-
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($VaultVersionKeys[3])){
-		$AgentLog.VaultVersion = $a[$i]
-	}
-}
-
-
-#AgentHostname
-$HostNameKeys = @(
-", hn=",
-"=",
-", ",
-"hn"
-)
-
-$a = $log1 | Where-Object {$_ -match ($HostNameKeys[0]) } | ForEach-Object {$_.Split($HostNameKeys[1])} | ForEach-Object {$_.Split($HostNameKeys[2])}
-
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($HostNameKeys[3])){
-		$AgentLog.HostName = $a[$i]
-	}
-}
-
-#Agent IPAddress
-$IPAddressKeys = @(
-", ip=",
-"=",
-", ",
-"ip"
-)
-$a = $log1 | Where-Object {$_ -match ($IPAddressKeys[0]) } | ForEach-Object {$_.Split($IPAddressKeys[1])} | ForEach-Object {$_.Split($IPAddressKeys[2])}
-
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($IPAddressKeys[3])){
-		$AgentLog.IPAddress = $a[$i]
-	}
-}
-
-#Agent TaskName
-$TaskNameKeys = @(
-" tn=",
-"=",
-", ",
-"tn"
-)
-
-$a = $log1 | Where-Object {$_ -match ($TaskNameKeys[0]) } | ForEach-Object {$_.Split($TaskNameKeys[1])} | ForEach-Object {$_.Split($TaskNameKeys[2])}
-
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($TaskNameKeys[3])){
-		$AgentLog.TaskName = $a[$i]
-	}
-}
-
 
 # Use case
-# $AgentLog | ft *
 $AgentLog | Set-Clipboard
  
-#Once pasted frm clipboard the result is:
-#
-#
-#LogPath      : C:\hsgTest\input\BACKUP_filtered.XLOG
-#AgentVersion : 7.24.3120
-#VaultVersion : 7.01
-#HostName     : Host-1
-#IPAddress    : 192.168.1.1
-#TaskName     : Host-1-EXCH
-#
-#
+#Once pasted from clipboard the result is:
+#LogPath       : C:\posh\input\Backup.LOG
+#LogName       : Backup.LOG
+#VaultName     : VAULT1
+#VaultVersion  : 7.01.6124
+#AgentHostname : NETAPP1
+#AgentIP       : 172.16.179.81
+#AgentVersion  : 7.21.2205
+#TaskName      : Filer1
+#TaskID        : 95c085fc-2f80-4163-aa10-72e46c6bf10a
+#SafesetNumber : 81
+#VUID          : 0296bd61-eaff-48c1-a66e-364b12a6771a

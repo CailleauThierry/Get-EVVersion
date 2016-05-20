@@ -3,8 +3,8 @@
 		Description still to come
 
 	.DESCRIPTION
-		working Get-EVVersion08_08.ps1  it usesthe desktop shortcut as the wrapper
-
+		Get-EVVersion08_08.ps1 based on working Get-EVVersion08_08.ps1  it uses the desktop shortcut as the wrapper. 
+		This is just adding comment. No functionnality change. Functionnality change would require major code re-write.
 	.PARAMETER  ParameterA
 		The description of the ParameterA parameter.
 
@@ -37,7 +37,7 @@
 
 
 param ( 
-[Parameter(mandatory=$true)][string] $InputFile # = 'C:\posh\input\BACKUP.XLOG.log'  since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$true)][string] $InputFile = # 'C:\posh\input\BACKUP.XLOG.log'   since I use the same file for testing , I should check against an expected output result
 )
 
 
@@ -68,8 +68,8 @@ $log1 = Get-Content $InputFile
 $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
-$A0 = @{key0 = " Agent Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "AgentVersion"}  # changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de L'agent"
-$A1 = @{key0 = " Vault Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
+$A0 = @{key0 = " BKUP-I-04314";key1 = " ";key2 = " ";key3 = "Version";key4 = "AgentVersion"}  # changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de l’Agent"
+$A1 = @{key0 = " BKUP-I-04315";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
 $A2 = @{key0 = ", hn=";key1 = "=";key2 = ", ";key3 = "hn";key4 = "HostName"}
 $A3 = @{key0 = ", ip=";key1 = "=";key2 = ", ";key3 = "ip";key4 = "IPAddress"}
 $A4 = @{key0 = " tn=";key1 = "=";key2 = ", ";key3 = "tn";key4 = "TaskName"}
@@ -93,7 +93,8 @@ $A7
 
 for($counter = 0; $counter -lt $Keys.Length; $counter++){
 	$a = $log1 | Where-Object {$_ -match $Keys[$counter].key0 } | ForEach-Object {$_.Split($Keys[$counter].key1)} | ForEach-Object {$_.Split($Keys[$counter].key2)}
-
+# if an element of the selected row contains the "pre-word" key3 (like Version, hn, tn...) then pick the next entry in the splitted line. This entry is store in an object with corresponding
+# key4 Property (like AgentVersion, HostName, TaskName. This is the resulte of observer redundancies and size optimzation of the code
 	$i = 0
 	foreach ($element in $a){
 		$i++

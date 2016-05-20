@@ -3,7 +3,7 @@
 		Description still to come
 
 	.DESCRIPTION
-		Get-EVVersion08_07.ps1 base on working Get-EVVersion08_06.ps1. I am compiling as an exe with ps2exe_force_wait.ps1
+		working Get-EVVersion08_08.ps1  it usesthe desktop shortcut as the wrapper
 
 	.PARAMETER  ParameterA
 		The description of the ParameterA parameter.
@@ -35,19 +35,10 @@
 #>
 
 
-#processing "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_06.ps1" for handling error on passing .txt files
 
 param ( 
 [Parameter(mandatory=$true)][string] $InputFile # = 'C:\posh\input\BACKUP.XLOG.log'  since I use the same file for testing , I should check against an expected output result
 )
-
-# param works as a script but does not come up when an executable. 
-# That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
-
-
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_06.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_05.ps1" optimized Agent log parsing
-
 
 
 # set Clipboard
@@ -77,9 +68,8 @@ $log1 = Get-Content $InputFile
 $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
-
-$A0 = @{key0 = " BKUP-I-04314";key1 = " ";key2 = " ";key3 = "Agent";key4 = "AgentVersion"}		# changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de L'agent"
-$A1 = @{key0 = " BKUP-I-04315";key1 = " ";key2 = " ";key3 = "ault";key4 = "VaultVersion"}	# changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
+$A0 = @{key0 = " Agent Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "AgentVersion"}  # changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de L'agent"
+$A1 = @{key0 = " Vault Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
 $A2 = @{key0 = ", hn=";key1 = "=";key2 = ", ";key3 = "hn";key4 = "HostName"}
 $A3 = @{key0 = ", ip=";key1 = "=";key2 = ", ";key3 = "ip";key4 = "IPAddress"}
 $A4 = @{key0 = " tn=";key1 = "=";key2 = ", ";key3 = "tn";key4 = "TaskName"}

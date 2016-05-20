@@ -1,4 +1,41 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_04.ps1" for loop to increment through array
+﻿<#
+	.SYNOPSIS
+		Description still to come
+
+	.DESCRIPTION
+		A detailed description of the function.
+
+	.PARAMETER  ParameterA
+		The description of the ParameterA parameter.
+
+	.PARAMETER  ParameterB
+		The description of the ParameterB parameter.
+
+	.EXAMPLE
+		PS C:\> Get-Something -ParameterA 'One value' -ParameterB 32
+
+	.EXAMPLE
+		PS C:\> Get-Something 'One value' 32
+
+	.INPUTS
+		Evault backup logs in text format
+
+	.OUTPUTS
+		TypeName: System.Management.Automation.PSCustomObject
+
+	.NOTES
+		Additional information about the function go here.
+
+	.LINK
+		about_functions_advanced
+
+	.LINK
+		about_comment_based_help
+
+#>
+
+
+#processing "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_06.ps1" for handling error on passing .txt files
 
 param ( 
 [Parameter(mandatory=$true)][string] $InputFile = 'C:\posh\input\BACKUP.XLOG.log' # since I use the same file for testing , I should check against an expected output result
@@ -8,8 +45,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_04.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_06.ps1" highly optimize Vault log parsing
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_06.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion08_05.ps1" optimized Agent log parsing
 
 
 
@@ -41,8 +78,8 @@ $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
 
-$A0 = @{key0 = " Agent Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "AgentVersion"}
-$A1 = @{key0 = " Vault Version";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}
+$A0 = @{key0 = " BKUP-I-04314";key1 = " ";key2 = " ";key3 = "Agent";key4 = "AgentVersion"}		# changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de L'agent"
+$A1 = @{key0 = " BKUP-I-04315";key1 = " ";key2 = " ";key3 = "ault";key4 = "VaultVersion"}	# changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
 $A2 = @{key0 = ", hn=";key1 = "=";key2 = ", ";key3 = "hn";key4 = "HostName"}
 $A3 = @{key0 = ", ip=";key1 = "=";key2 = ", ";key3 = "ip";key4 = "IPAddress"}
 $A4 = @{key0 = " tn=";key1 = "=";key2 = ", ";key3 = "tn";key4 = "TaskName"}

@@ -1,4 +1,4 @@
-﻿#working but still in progress for 9_04 "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" make a foreeach to apply each arrays to the same function 
+﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" for loop to increment through array
 
 param ( 
 [Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
@@ -8,8 +8,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\GGet-EVVersion09_02.ps1" array detection and property param in array
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" array detection and property param in array
 
 
 
@@ -105,16 +105,28 @@ $A7,
 $A8
 )
 
-$a = $log1 | Where-Object {$_ -match $Keys[0].key0 } | ForEach-Object {$_.Split($Keys[0].key1)} | ForEach-Object {$_.Split($Keys[0].key2)}
 
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains($Keys[0].key3)){
-		$temp = $Keys[0].key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
-		$VaultLog."$temp" = $a[$i]
+#$Data = 1..1000
+#$range = $Data
+#$count = $range.Count
+#For($i=0; $i -lt $count; $i++) {
+# $i
+# }
+
+for($counter = 0; $counter -lt $Keys.Length; $counter++){
+	$a = $log1 | Where-Object {$_ -match $Keys[$counter].key0 } | ForEach-Object {$_.Split($Keys[$counter].key1)} | ForEach-Object {$_.Split($Keys[$counter].key2)}
+
+	$i = 0
+	foreach ($element in $a){
+		$i++
+		if ($element.Contains($Keys[$counter].key3)){
+			$temp = $Keys[$counter].key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
+			$VaultLog."$temp" = $a[$i]
+		}
 	}
 }
+
+
 
 ##VaultVersion
 #

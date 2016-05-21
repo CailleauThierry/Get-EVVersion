@@ -3,9 +3,10 @@
 		Description still to come
 
 	.DESCRIPTION
-		working Get-EVVersion10_04.ps1 based on working Get-EVVersion10_03.ps1. Working on adding multiple entry to properties
+		Get-EVVersion10_05.ps1 based on working Get-EVVersion10_04.ps1 which adds a timestamp. This timestamp might not be convenient for the rest of the process.
+		I want to add multiple reccurence of the same entry in a different PropertyName
 		It uses the desktop shortcut as the wrapper. 
-		Also could add multiple reccurence of the same entry in a different PropertyName
+		
 	.PARAMETER  ParameterA
 		The description of the ParameterA parameter.
 
@@ -52,7 +53,7 @@ param (
 $AgentLog = New-Object PSObject
 $AgentLog | Add-Member NoteProperty LogPath "C:\-"
 $AgentLog | Add-Member NoteProperty LogName "-"
-$AgentLog | Add-Member NoteProperty TimeStamp "xx-xxx xx:xx:xx"
+$AgentLog | Add-Member NoteProperty TimeStamp "dd-mmm hh:mm:ss"
 $AgentLog | Add-Member NoteProperty AgentVersion "-.--.----"
 $AgentLog | Add-Member NoteProperty VaultVersion "-.--"
 $AgentLog | Add-Member NoteProperty HostName "-"
@@ -97,14 +98,12 @@ $A8
 )
 
 for($counter = 0; $counter -lt $Keys.Length; $counter++){
-	$log1 | Where-Object {$_ -match $Keys[$counter].key0 } | Where-Object {$_ -match  $Keys[$counter].key1}
-
-# key2 Property (like AgentVersion, HostName, TaskName. This is the resulte of observer redundancies and size optimzation of the code
+	$log1 | Where-Object {$_ -match $Keys[$counter].key0 } | ForEach-Object -Process {
+		$_ -match  $Keys[$counter].key1
 		$temp = $Keys[$counter].key2
-		
-		$AgentLog."$temp" = $Matches[2]
-
-
+		$Proper = $temp + $Matches.Count		# this only provide the total count of matching object here 4 since there are 4 backup logs in 1
+		$AgentLog | Add-Member NoteProperty "$Proper" $Matches[2]
+	}
 }
 
 # Use case

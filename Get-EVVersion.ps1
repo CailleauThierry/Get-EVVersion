@@ -3,8 +3,7 @@
 		Description still to come
 
 	.DESCRIPTION
-		Get-EVVersion10_02.ps1 based on working Get-EVVersion10_01.ps1 fully working in RegEx. 
-		I found an all encompassing RegEx expression when "exact field before is know" and ending field after is space or comma + space ", " or " " . But some guid have no trailing spaces... ...so not all emcompassing after all.
+		Get-EVVersion10_03.ps1 based on working Get-EVVersion10_02.ps1. Code cleanup. Now also tested on Restore logs even Synch logs
 		It uses the desktop shortcut as the wrapper. 
 		Also could add multiple reccurence of the same entry in a different PropertyName
 	.PARAMETER  ParameterA
@@ -39,7 +38,7 @@
 
 
 param ( 
-[Parameter(mandatory=$false)][string] $InputFile  =  'C:\posh\input\exceptions\00000249.XLOG.log' #  since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$false)][string] $InputFile  =  'C:\Users\tcailleau\Documents\EMEA_files\Temp\006xxxxx\0062xxxx\00623507\support-bundle-20150128-092837\support-bundle-20150128-092837\support-bundle-20150128-092837\agent\BUAgent\Misc_1\RST20150116-133438.XLOG.log' #  since I use the same file for testing , I should check against an expected output result
 )
 
 
@@ -53,8 +52,8 @@ param (
 $AgentLog = New-Object PSObject
 $AgentLog | Add-Member NoteProperty LogPath "C:\-"
 $AgentLog | Add-Member NoteProperty LogName "-"
-$AgentLog | Add-Member NoteProperty AgentVersion "-.-"
-$AgentLog | Add-Member NoteProperty VaultVersion "-.-"
+$AgentLog | Add-Member NoteProperty AgentVersion "-.--.----"
+$AgentLog | Add-Member NoteProperty VaultVersion "-.--"
 $AgentLog | Add-Member NoteProperty HostName "-"
 $AgentLog | Add-Member NoteProperty IPAddress "-.-.-.-"
 $AgentLog | Add-Member NoteProperty TaskName "-"
@@ -72,8 +71,8 @@ $AgentLog.LogName = $log1[1].PSChildName
 
 # key0 : line identifier key1 : RegEx Expression Matching for key0 identifier key2 is the PSObject Property Name associated with key0 identifier
 
-$A0 = @{key0 = " BKUP-I-04314";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}\.\d{4}))';key2 = "AgentVersion"}  # adding '\s' to get results $Matches[2] RegEx tested on http://rubular.com/ Note: need to escape "." with "\"
-$A1 = @{key0 = " BKUP-I-04315";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}))';key2 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
+$A0 = @{key0 = "-I-04314";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}\.\d{4}))';key2 = "AgentVersion"}  # " BKUP-I-04314" same code as" REST-I-04314" so chnaging it to "-I-04314" only
+$A1 = @{key0 = "-I-04315";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}))';key2 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
 $A2 = @{key0 =  " hn=";key1 =  '(hn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = "HostName"} # RegEx tested on http://rubular.com/ (.*?) where "?" means relunctant (matches only once) as oppose to greedy. See http://groovy.codehaus.org/Tutorial+5+-+Capturing+regex+groups> 
 $A3 = @{key0 =  " ip=";key1 = '(ip=)(?<RegExMatch>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))';key2 = "IPAddress"} # '(ip=)' is not needed here but it looks consistent with previous (hn=)
 $A4 = @{key0 =  " tn=";key1 =  '(tn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = "TaskName"}

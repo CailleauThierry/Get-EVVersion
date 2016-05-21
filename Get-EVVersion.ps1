@@ -1,4 +1,4 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" for loop to increment through array
+﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_05.ps1" for loop to increment through array
 
 param ( 
 [Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
@@ -8,8 +8,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" array detection and property param in array
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_05.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" array detection and property param in array
 
 
 
@@ -29,7 +29,7 @@ $VaultLog | Add-Member NoteProperty AgentHostname "-"
 $VaultLog | Add-Member NoteProperty AgentIP "-.-.-.-"
 $VaultLog | Add-Member NoteProperty AgentVersion "-"
 $VaultLog | Add-Member NoteProperty TaskName "-"
-$VaultLog | Add-Member NoteProperty TaskID "(-)"
+$VaultLog | Add-Member NoteProperty TaskID "-"
 $VaultLog | Add-Member NoteProperty SafesetNumber "-"
 $VaultLog | Add-Member NoteProperty VUID "-"
 
@@ -58,39 +58,11 @@ $A1 = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "
 $A2 = @{key0 = "vid=";key1 = " ";key2 = "";key3 = "vid=";key4 = "VUID"}
 $A3 = @{key0 = "hn = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentHostname"}
 $A4 = @{key0 = "ip = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentIP"}
-$A5 = @{key0 = "Agent version is ";key1 = " ";key2 = "";key3 = "is";key4 = "AgentVersion"}
+$A5 = @{key0 = "Agent version is <";key1 = "<";key2 = ">";key3 = "is ";key4 = "AgentVersion"}
 $A6 = @{key0 = "tn = ";key1 = " ";key2 = "";key3 = "=";key4 = "TaskName"}
 $A7 = @{key0 = "tid= ";key1 = " ";key2 = "";key3 = "tid=";key4 = "TaskID"}
 $A8 = @{key0 = "catalog number is ";key1 = " ";key2 = "";key3 = "is";key4 = "SafesetNumber"}
 
-
-##SafesetNumber
-#$a = $log1 | Where-Object {$_ -match ("catalog number is ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.SafesetNumber = $a[-1]
-
-##TaskID
-#$a = $log1 | Where-Object {$_ -match ("tid= ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.TaskID = $a[-1]
-
-##TaskName
-#$a = $log1 | Where-Object {$_ -match ("tn = ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.TaskName = $a[-1]
-
-##AgentVersion
-#$a = $log1 | Where-Object {$_ -match ("Agent version is ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.AgentVersion = $a[-1]
-
-##AgentIP
-#$a = $log1 | Where-Object {$_ -match ("ip = ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.AgentIP = $a[-1]
-
-##AgentHostname
-#$a = $log1 | Where-Object {$_ -match ("hn = ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.AgentHostname = $a[-1]
-
-##VUID
-#$a = $log1 | Where-Object {$_ -match ("vid=") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.VUID = $a[-1]
 
 
 $Keys = @(
@@ -128,55 +100,18 @@ for($counter = 0; $counter -lt $Keys.Length; $counter++){
 
 
 
-##VaultVersion
-#
-#$Keys = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "Version";key4 = "VaultVersion"}
-#
-#$a = $log1 | Where-Object {$_ -match $Keys.key0 } | ForEach-Object {$_.Split($Keys.key1)} | ForEach-Object {$_.Split($Keys.key2)}
-#
-#$i = 0
-#foreach ($element in $a){
-#	$i++
-#	if ($element.Contains($Keys.key3)){
-#		$temp = $Keys.key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
-#		$VaultLog."$temp" = $a[$i]
-#	}
-#}
-
-##VaultVersion
-#$a = $log1 | Where-Object {$_ -match ("EVault Software Director Version ") } | ForEach-Object {$_.Split(" ")}
-#
-##function to take the next value after "Version"
-#$i = 0
-#foreach ($element in $a){
-#	$i++
-#	if ($element.Contains("Version")){
-#		$VaultLog.VaultVersion = $a[$i]
-#	}
-#}
-
-
-
-
-
-#$log1[1].PSChildName
-#$a = $log1 | Where-Object {$_ -match ("tid= ") }
-#$b = $a | ForEach-Object {$_.Split(" ")}
-#$VaultLog.TaskID =$b[-1]  
-#(362)
-
-
 # Use case
 $VaultLog | Set-Clipboard
  
-#Once pasted frm clipboard the result is:
-#
-#
-#LogPath      : C:\hsgTest\input\BACKUP_filtered.XLOG
-#AgentVersion : 7.24.3120
-#VaultVersion : 7.01
-#HostName     : Host-1
-#IPAddress    : 192.168.1.1
-#TaskName     : Host-1-EXCH
-#
-#
+#Once pasted from clipboard the result is:
+#LogPath       : C:\posh\input\Backup.LOG
+#LogName       : Backup.LOG
+#VaultName     : VAULT1
+#VaultVersion  : 7.01.6124
+#AgentHostname : NETAPP1
+#AgentIP       : 172.16.179.81
+#AgentVersion  : 7.21.2205
+#TaskName      : Filer1
+#TaskID        : 95c085fc-2f80-4163-aa10-72e46c6bf10a
+#SafesetNumber : 81
+#VUID          : 0296bd61-eaff-48c1-a66e-364b12a6771a

@@ -1,4 +1,4 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_01.ps1" with input parameter a Vault log in txt format (save as txt from logviewer) and paste results to clipboard
+﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_02.ps1" with #VaultName filter indenpendent of Parameter VaultName withing the filter function
 
 param ( 
 [Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
@@ -8,81 +8,14 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_02.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion06_01.ps1" tid to clipboard
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_02.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\GGet-EVVersion09_01.ps1" array detection and split keywords
 
 
 
-#beginning of#################################################################
-##
-## Set-Clipboard
-##
-## From Windows PowerShell Cookbook (O'Reilly)
-## by Lee Holmes (http://www.leeholmes.com/guide)
-##
-##############################################################################
-Function Set-Clipboard {
-<#
+# set Clipboard
 
-.SYNOPSIS
-
-Sends the given input to the Windows clipboard.
-
-.EXAMPLE
-
-dir | Set-Clipboard
-This example sends the view of a directory listing to the clipboard
-
-.EXAMPLE
-
-Set-Clipboard "Hello World"
-This example sets the clipboard to the string, "Hello World".
-
-#>
-
-param(
-    ## The input to send to the clipboard
-    [Parameter(ValueFromPipeline = $true)]
-    [object[]] $InputObject
-)
-
-begin
-{
-    Set-StrictMode -Version Latest
-    $objectsToProcess = @()
-}
-
-process
-{
-    ## Collect everything sent to the script either through
-    ## pipeline input, or direct input.
-    $objectsToProcess += $inputObject
-}
-
-end
-{
-    ## Launch a new instance of PowerShell in STA mode.
-    ## This lets us interact with the Windows clipboard.
-    $objectsToProcess | PowerShell -NoProfile -STA -Command {
-        Add-Type -Assembly PresentationCore
-
-        ## Convert the input objects to a string representation
-        $clipText = ($input | Out-String -Stream) -join "`r`n"
-
-        ## And finally set the clipboard text
-        [Windows.Clipboard]::SetText($clipText)
-    }
-}
-}
-
-#end of#######################################################################
-##
-## Set-Clipboard
-##
-## From Windows PowerShell Cookbook (O'Reilly)
-## by Lee Holmes (http://www.leeholmes.com/guide)
-##
-##############################################################################
+. C:\posh\projects\Clipboard\Set-Clipboard_fc.ps1
 
 
 # $log1 for Get-Content of it $log1 = Get-Content C:\hsgTest\input\Backup-526ABFBB-48AC-29B4.LOG
@@ -109,15 +42,16 @@ $VaultLog.LogName = $log1[1].PSChildName
 #$a = $log1 | Where-Object {$_ -match ("Vault: ") } | ForEach-Object {$_.Split(" ")}
 #$VaultLog.VaultName = $a[-1]
 
-$VaultNameKeys = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:"}
+$Keys = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
 
-$a = $log1 | Where-Object {$_ -match $VaultNameKeys.key0 } | ForEach-Object {$_.Split($VaultNameKeys.key1)} | ForEach-Object {$_.Split($VaultNameKeys.key2)}
+$a = $log1 | Where-Object {$_ -match $Keys.key0 } | ForEach-Object {$_.Split($Keys.key1)} | ForEach-Object {$_.Split($Keys.key2)}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains($VaultNameKeys.key3)){
-		$VaultLog.VaultName = $a[$i]
+	if ($element.Contains($Keys.key3)){
+		$temp = $Keys.key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
+		$VaultLog."$temp" = $a[$i]
 	}
 }
 

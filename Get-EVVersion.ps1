@@ -38,19 +38,6 @@ $log1 = Get-Content $InputFile
 $VaultLog.LogPath = $log1[1].PSPath 
 $VaultLog.LogName = $log1[1].PSChildName
 
-#VaultName
-#$a = $log1 | Where-Object {$_ -match ("Vault: ") } | ForEach-Object {$_.Split(" ")}
-#$VaultLog.VaultName = $a[-1]
-
-#$VaultNameArray = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
-#$VaultVersionArray = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "Version";key4 = "VaultVersion"}
-#$VUIDArray = @{key0 = "vid=";key1 = " ";key2 = "";key3 = "vid=";key4 = "VUID"}
-#$AgentHostnameArray = @{key0 = "hn = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentHostname"}
-#$AgentIPArray = @{key0 = "ip = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentIP"}
-#$AgentVersionArray = @{key0 = "Agent version is ";key1 = " ";key2 = "";key3 = "is";key4 = "AgentVersion"}
-#$TaskNameArray = @{key0 = "tn = ";key1 = " ";key2 = "";key3 = "=";key4 = "TaskName"}
-#$TaskIDArray = @{key0 = "tid= ";key1 = " ";key2 = "";key3 = "tid=";key4 = "TaskID"}
-#$SafesetNumberArray = @{key0 = "catalog number is ";key1 = " ";key2 = "";key3 = "is";key4 = "SafesetNumber"}
 
 
 $A0 = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
@@ -77,14 +64,6 @@ $A7,
 $A8
 )
 
-
-#$Data = 1..1000
-#$range = $Data
-#$count = $range.Count
-#For($i=0; $i -lt $count; $i++) {
-# $i
-# }
-
 for($counter = 0; $counter -lt $Keys.Length; $counter++){
 	$a = $log1 | Where-Object {$_ -match $Keys[$counter].key0 } | ForEach-Object {$_.Split($Keys[$counter].key1)} | ForEach-Object {$_.Split($Keys[$counter].key2)}
 
@@ -97,8 +76,6 @@ for($counter = 0; $counter -lt $Keys.Length; $counter++){
 		}
 	}
 }
-
-
 
 # Use case
 $VaultLog | Set-Clipboard

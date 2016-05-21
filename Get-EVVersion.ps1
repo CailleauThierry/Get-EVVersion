@@ -1,9 +1,9 @@
 ﻿<#
 	.SYNOPSIS
-		Get-EVVersion10_07.ps1 is a powershell script that extracts essential ticket documenting information for Agent logs and places it in the clipboard (ready to paste into Salesforce or else)
+		Get-EVVersion10_08.ps1 is a powershell script that extracts essential ticket documenting information for Agent logs and places it in the clipboard (ready to paste into Salesforce or else)
 	.DESCRIPTION
-		Get-EVVersion10_07.ps1 based on working Get-EVVersion10_04.ps1 which adds the end of log time
-		It uses the desktop shortcut as the wrapper. 
+		Get-EVVersion10_08.ps1 based on working Get-EVVersion10_07.ps1 fixed different month lenght in Franch for EndLogTime detection
+		It uses the desktop shortcut / and or pin to Taskbar as the wrapper. 
 		Also could add multiple reccurence of the same entry in a different PropertyName
 	.PARAMETER  ParameterA
 		Drag&Drop of the Agent log file to the script shotcut. It takes the full path
@@ -36,7 +36,7 @@ param (
 
 # set Clipboard
 
-. C:\posh\Set-Clipboard_fc.ps1
+. C:\posh\projects\Clipboard\Set-Clipboard_fc.ps1
 
 
 # $log1 for Get-Content of it $log1 = Get-Content C:\hsgTest\input\Backup-526ABFBB-48AC-29B4.LOG
@@ -63,15 +63,15 @@ $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
 # key0 : line identifier key1 : RegEx Expression Matching for key0 identifier key2 is the PSObject Property Name associated with key0 identifier
-$A0 = @{key0 = '(^)((\d{2}\-\w{3}))';key1 = '(^)(?<RegExMatch>(\d{2}\-\w{3}\s\d{2}:\d{2}:\d{2}))';key2 = "LogEndTime"}  # '(^)(?<RegExMatch>(\d{2}\-\w{3}\s\d{2}:\d{2}:\d{2}))' matching format '04-Dec 21:30:02'
-$A1 = @{key0 = "\-I\-04314";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}\.\d{4}))';key2 = "AgentVersion"}  # " BKUP-I-04314" same code as" REST-I-04314" so chnaging it to "-I-04314" only
-$A2 = @{key0 = "\-I\-04315";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}))';key2 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
-$A3 = @{key0 =  " hn=";key1 =  '(hn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = "HostName"} # RegEx tested on http://rubular.com/ (.*?) where "?" means relunctant (matches only once) as oppose to greedy. See http://groovy.codehaus.org/Tutorial+5+-+Capturing+regex+groups> 
-$A4 = @{key0 =  " ip=";key1 = '(ip=)(?<RegExMatch>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))';key2 = "IPAddress"} # '(ip=)' is not needed here but it looks consistent with previous (hn=)
+$A0 = @{key0 = '(^)((\d{2}\-\w{3}))';key1 = '(^)(?<RegExMatch>(\d{2}\-\w{3,4}\s\d{2}:\d{2}:\d{2}))';key2 = "LogEndTime"}  	# '(^)(?<RegExMatch>(\d{2}\-\w{3}\s\d{2}:\d{2}:\d{2}))' matching format '04-Dec 21:30:02'
+$A1 = @{key0 = "\-I\-04314";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}\.\d{4}))';key2 = "AgentVersion"}  						# " BKUP-I-04314" same code as" REST-I-04314" so chnaging it to "-I-04314" only
+$A2 = @{key0 = "\-I\-04315";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}))';key2 = "VaultVersion"}  								# changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
+$A3 = @{key0 =  " hn=";key1 =  '(hn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = "HostName"} 										# RegEx tested on http://rubular.com/ (.*?) where "?" means relunctant (matches only once) as oppose to greedy. See http://groovy.codehaus.org/Tutorial+5+-+Capturing+regex+groups> 
+$A4 = @{key0 =  " ip=";key1 = '(ip=)(?<RegExMatch>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))';key2 = "IPAddress"} 				# '(ip=)' is not needed here but it looks consistent with previous (hn=)
 $A5 = @{key0 =  " tn=";key1 =  '(tn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = "TaskName"}
 $A6 = @{key0 = " tid=";key1 = '(tid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "TaskGUID"}
-$A7 = @{key0 = " cid=";key1 = '(cid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "AgentGUID"}  # there is no "," at the end of the first cid
-$A8 = @{key0 = " vid=";key1 = '(vid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "VaultGUID"}  # since guid are a set format, I do not need to match the "," at the end
+$A7 = @{key0 = " cid=";key1 = '(cid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "AgentGUID"}  				# there is no "," at the end of the first cid
+$A8 = @{key0 = " vid=";key1 = '(vid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "VaultGUID"}  				# since guid are a set format, I do not need to match the "," at the end
 
 
 

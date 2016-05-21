@@ -3,8 +3,10 @@
 		Description still to come
 
 	.DESCRIPTION
-		Get-EVVersion10_00.ps1 based on working Get-EVVersion08_09.ps1  it uses the desktop shortcut as the wrapper. 
-		This is the first attempt at regex re-write
+		Get-EVVersion10_01.ps1 based on working Get-EVVersion10_00.ps1 but only for agent version detected with Regex. 
+		It uses the desktop shortcut as the wrapper. 
+		Now entering other field's Regex's
+		Also could add multiple reccurence of the same entry in a different PropertyName
 	.PARAMETER  ParameterA
 		The description of the ParameterA parameter.
 
@@ -37,7 +39,7 @@
 
 
 param ( 
-[Parameter(mandatory=$false)][string] $InputFile =  'C:\posh\input\backup_fr.xlog.log' #  since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$true)][string] $InputFile # =  'C:\posh\input\backup_fr.xlog.log' #  since I use the same file for testing , I should check against an expected output result
 )
 
 
@@ -68,14 +70,16 @@ $log1 = Get-Content $InputFile
 $AgentLog.LogPath = $log1[1].PSPath
 $AgentLog.LogName = $log1[1].PSChildName
 
-$A0 = @{key0 = " BKUP-I-04314";key1 = '(?<RegExMatch>\d{1}.\d{2}.\d{4})';key2 = " ";key3 = "Version";key4 = "AgentVersion"}  # changed keyword " Agent Version" to " BKUP-I-04314" as in French it would Be "Version de l’Agent"
-$A1 = @{key0 = " BKUP-I-04315";key1 = " ";key2 = " ";key3 = "Version";key4 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
-$A2 = @{key0 = ", hn=";key1 = "=";key2 = ", ";key3 = "hn";key4 = "HostName"}
-$A3 = @{key0 = ", ip=";key1 = "=";key2 = ", ";key3 = "ip";key4 = "IPAddress"}
-$A4 = @{key0 = " tn=";key1 = "=";key2 = ", ";key3 = "tn";key4 = "TaskName"}
-$A5 = @{key0 = ", tid=";key1 = "=";key2 = ", ";key3 = "tid";key4 = "TaskGUID"}
-$A6 = @{key0 = ", cid=";key1 = "=";key2 = ", ";key3 = "cid";key4 = "AgentGUID"}
-$A7 = @{key0 = ", vid=";key1 = "=";key2 = ", ";key3 = "vid";key4 = "VaultGUID"}
+# some Agents like VRA 7.10 do not have the "," in line matching parameter like ", hn=". I remove this "," but keep the space
+
+$A0 = @{key0 = " BKUP-I-04314";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}\.\d{4}))';key2 = " ";key4 = "AgentVersion"}  # adding '\s' to get results $Matches[2] RegEx tested on http://rubular.com/ Note: need to escape "." with "\"
+$A1 = @{key0 = " BKUP-I-04315";key1 = '(\s)(?<RegExMatch>(\d{1}\.\d{2}))';key2 = " ";key4 = "VaultVersion"}  # changed keyword " Vault Version" to " BKUP-I-04315" as in French it would Be "Version du vault" , note sub-filtering by ault As vault in english is upppercase V
+$A2 = @{key0 = " hn=";key1 = '(hn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = " ";key4 = "HostName"} # RegEx tested on http://rubular.com/ (.*?) where "?" means relunctant (matches only once) as oppose to greedy. See http://groovy.codehaus.org/Tutorial+5+-+Capturing+regex+groups> 
+$A3 = @{key0 = " ip=";key1 = '(ip=)(?<RegExMatch>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))';key2 = " ";key4 = "IPAddress"} # '(ip=)' is not needed here but it looks consistent with previous (hn=)
+$A4 = @{key0 = " tn=";key1 = '(tn=)(?<RegExMatch>(.*?))[,\s]\s*';key2 = " ";key4 = "TaskName"}
+$A5 = @{key0 = " tid=";key1 = '(tid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = " ";key4 = "TaskGUID"}
+$A6 = @{key0 = " cid=";key1 = '(cid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = " ";key4 = "AgentGUID"}  # there is no "," at the end of the first cid
+$A7 = @{key0 = " vid=";key1 = '(vid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = " ";key4 = "VaultGUID"}  # since guid are a set format, I do not need to match the "," at the end
 
 
 
@@ -96,16 +100,9 @@ for($counter = 0; $counter -lt $Keys.Length; $counter++){
 # if an element of the selected row contains the "pre-word" key3 (like Version, hn, tn...) then pick the next entry in the splitted line. This entry is store in an object with corresponding
 # key4 Property (like AgentVersion, HostName, TaskName. This is the resulte of observer redundancies and size optimzation of the code
 		$temp = $Keys[$counter].key4
-		$AgentLog."$temp" = $Matches[0]
+		$AgentLog."$temp" = $Matches[2]
 
-#	$i = 0
-#	foreach ($element in $a){
-#		$i++
-#		if ($element.Contains($Keys[$counter].key3)){
-#			$temp = $Keys[$counter].key4
-#			$AgentLog."$temp" = $a[$i]
-#		}
-#	}
+
 }
 
 # Use case

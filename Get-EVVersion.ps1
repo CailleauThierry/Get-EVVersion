@@ -1,4 +1,4 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_02.ps1" with #VaultName filter indenpendent of Parameter VaultName withing the filter function
+﻿#working but still in progress for 9_04 "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" make a foreeach to apply each arrays to the same function 
 
 param ( 
 [Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
@@ -8,8 +8,8 @@ param (
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_02.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\GGet-EVVersion09_01.ps1" array detection and split keywords
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_03.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\GGet-EVVersion09_02.ps1" array detection and property param in array
 
 
 
@@ -42,58 +42,110 @@ $VaultLog.LogName = $log1[1].PSChildName
 #$a = $log1 | Where-Object {$_ -match ("Vault: ") } | ForEach-Object {$_.Split(" ")}
 #$VaultLog.VaultName = $a[-1]
 
-$Keys = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
+#$VaultNameArray = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
+#$VaultVersionArray = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "Version";key4 = "VaultVersion"}
+#$VUIDArray = @{key0 = "vid=";key1 = " ";key2 = "";key3 = "vid=";key4 = "VUID"}
+#$AgentHostnameArray = @{key0 = "hn = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentHostname"}
+#$AgentIPArray = @{key0 = "ip = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentIP"}
+#$AgentVersionArray = @{key0 = "Agent version is ";key1 = " ";key2 = "";key3 = "is";key4 = "AgentVersion"}
+#$TaskNameArray = @{key0 = "tn = ";key1 = " ";key2 = "";key3 = "=";key4 = "TaskName"}
+#$TaskIDArray = @{key0 = "tid= ";key1 = " ";key2 = "";key3 = "tid=";key4 = "TaskID"}
+#$SafesetNumberArray = @{key0 = "catalog number is ";key1 = " ";key2 = "";key3 = "is";key4 = "SafesetNumber"}
 
-$a = $log1 | Where-Object {$_ -match $Keys.key0 } | ForEach-Object {$_.Split($Keys.key1)} | ForEach-Object {$_.Split($Keys.key2)}
+
+$A0 = @{key0 = "Vault: ";key1 = " ";key2 = "";key3 = "Vault:";key4 = "VaultName"}
+$A1 = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "Version";key4 = "VaultVersion"}
+$A2 = @{key0 = "vid=";key1 = " ";key2 = "";key3 = "vid=";key4 = "VUID"}
+$A3 = @{key0 = "hn = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentHostname"}
+$A4 = @{key0 = "ip = ";key1 = " ";key2 = "";key3 = "=";key4 = "AgentIP"}
+$A5 = @{key0 = "Agent version is ";key1 = " ";key2 = "";key3 = "is";key4 = "AgentVersion"}
+$A6 = @{key0 = "tn = ";key1 = " ";key2 = "";key3 = "=";key4 = "TaskName"}
+$A7 = @{key0 = "tid= ";key1 = " ";key2 = "";key3 = "tid=";key4 = "TaskID"}
+$A8 = @{key0 = "catalog number is ";key1 = " ";key2 = "";key3 = "is";key4 = "SafesetNumber"}
+
+
+##SafesetNumber
+#$a = $log1 | Where-Object {$_ -match ("catalog number is ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.SafesetNumber = $a[-1]
+
+##TaskID
+#$a = $log1 | Where-Object {$_ -match ("tid= ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.TaskID = $a[-1]
+
+##TaskName
+#$a = $log1 | Where-Object {$_ -match ("tn = ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.TaskName = $a[-1]
+
+##AgentVersion
+#$a = $log1 | Where-Object {$_ -match ("Agent version is ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.AgentVersion = $a[-1]
+
+##AgentIP
+#$a = $log1 | Where-Object {$_ -match ("ip = ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.AgentIP = $a[-1]
+
+##AgentHostname
+#$a = $log1 | Where-Object {$_ -match ("hn = ") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.AgentHostname = $a[-1]
+
+##VUID
+#$a = $log1 | Where-Object {$_ -match ("vid=") } | ForEach-Object {$_.Split(" ")}
+#$VaultLog.VUID = $a[-1]
+
+
+$Keys = @(
+$A0,
+$A1,
+$A2,
+$A3,
+$A4,
+$A5,
+$A6,
+$A7,
+$A8
+)
+
+$a = $log1 | Where-Object {$_ -match $Keys[0].key0 } | ForEach-Object {$_.Split($Keys[0].key1)} | ForEach-Object {$_.Split($Keys[0].key2)}
 
 $i = 0
 foreach ($element in $a){
 	$i++
-	if ($element.Contains($Keys.key3)){
-		$temp = $Keys.key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
+	if ($element.Contains($Keys[0].key3)){
+		$temp = $Keys[0].key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
 		$VaultLog."$temp" = $a[$i]
 	}
 }
 
-#VaultVersion
-$a = $log1 | Where-Object {$_ -match ("EVault Software Director Version ") } | ForEach-Object {$_.Split(" ")}
+##VaultVersion
+#
+#$Keys = @{key0 = "EVault Software Director Version ";key1 = " ";key2 = "";key3 = "Version";key4 = "VaultVersion"}
+#
+#$a = $log1 | Where-Object {$_ -match $Keys.key0 } | ForEach-Object {$_.Split($Keys.key1)} | ForEach-Object {$_.Split($Keys.key2)}
+#
+#$i = 0
+#foreach ($element in $a){
+#	$i++
+#	if ($element.Contains($Keys.key3)){
+#		$temp = $Keys.key4 # is a workaround as "$VaultLog."$Keys.key4" = $a[$i]" does not bring the same result
+#		$VaultLog."$temp" = $a[$i]
+#	}
+#}
 
-#function to take the next value after "Version"
-$i = 0
-foreach ($element in $a){
-	$i++
-	if ($element.Contains("Version")){
-		$VaultLog.VaultVersion = $a[$i]
-	}
-}
+##VaultVersion
+#$a = $log1 | Where-Object {$_ -match ("EVault Software Director Version ") } | ForEach-Object {$_.Split(" ")}
+#
+##function to take the next value after "Version"
+#$i = 0
+#foreach ($element in $a){
+#	$i++
+#	if ($element.Contains("Version")){
+#		$VaultLog.VaultVersion = $a[$i]
+#	}
+#}
 
-#VUID
-$a = $log1 | Where-Object {$_ -match ("vid=") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.VUID = $a[-1]
 
-#AgentHostname
-$a = $log1 | Where-Object {$_ -match ("hn = ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.AgentHostname = $a[-1]
 
-#AgentIP
-$a = $log1 | Where-Object {$_ -match ("ip = ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.AgentIP = $a[-1]
 
-#AgentVersion
-$a = $log1 | Where-Object {$_ -match ("Agent version is ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.AgentVersion = $a[-1]
-
-#TaskName
-$a = $log1 | Where-Object {$_ -match ("tn = ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.TaskName = $a[-1]
-
-#TaskID
-$a = $log1 | Where-Object {$_ -match ("tid= ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.TaskID = $a[-1]
-
-#SafesetNumber
-$a = $log1 | Where-Object {$_ -match ("catalog number is ") } | ForEach-Object {$_.Split(" ")}
-$VaultLog.SafesetNumber = $a[-1]
 
 #$log1[1].PSChildName
 #$a = $log1 | Where-Object {$_ -match ("tid= ") }

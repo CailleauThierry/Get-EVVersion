@@ -1,15 +1,15 @@
-﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_05.ps1" for loop to increment through array
+﻿#working "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_07.ps1" re-instating mandatory input
 
 param ( 
-[Parameter(mandatory=$false)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
+[Parameter(mandatory=$true)][string] $InputFile = 'C:\posh\input\Backup.LOG' # since I use the same file for testing , I should check against an expected output result
 )
 
 # param works as a script but does not come up when an executable. 
 # That was because I had to select "Show PowerShell Console" when crearing the executable with PowerGUI
 
 
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_05.ps1" based on working
-# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_04.ps1" array detection and property param in array
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_07.ps1" based on working
+# "C:\hsgTest\projects\Get-EVVersion\Get-EVVersion09_06.ps1" array detection and property param in array
 
 
 
@@ -83,12 +83,12 @@ $VaultLog | Set-Clipboard
 #Once pasted from clipboard the result is:
 #LogPath       : C:\posh\input\Backup.LOG
 #LogName       : Backup.LOG
-#VaultName     : VAULT1
+#VaultName     : W2K8EVAULTP1
 #VaultVersion  : 7.01.6124
-#AgentHostname : NETAPP1
+#AgentHostname : W2K8NETAPP1
 #AgentIP       : 172.16.179.81
 #AgentVersion  : 7.21.2205
-#TaskName      : Filer1
+#TaskName      : Filer_Groups_1
 #TaskID        : 95c085fc-2f80-4163-aa10-72e46c6bf10a
 #SafesetNumber : 81
 #VUID          : 0296bd61-eaff-48c1-a66e-364b12a6771a

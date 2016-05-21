@@ -3,7 +3,7 @@
 		Description still to come
 
 	.DESCRIPTION
-		Get-EVVersion10_05.ps1 based on working Get-EVVersion10_04.ps1 which adds a timestamp. This timestamp might not be convenient for the rest of the process.
+		Get-EVVersion10_06.ps1 based on processing Get-EVVersion10_05.ps1 which adds a timestamp. Trying to understand the workings of where-object + match
 		I want to add multiple reccurence of the same entry in a different PropertyName
 		It uses the desktop shortcut as the wrapper. 
 		

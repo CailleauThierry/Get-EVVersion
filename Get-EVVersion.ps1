@@ -6,9 +6,9 @@
 		
 		Also could add multiple reccurence of the same entry in a different PropertyName
 	.PARAMETER  ParameterA
-		Drag & Drop of the Agent log file to the script shotcut. It takes the full path
+		Drag&Drop of the Agent log file to the script shotcut. It takes the full path
 	.EXAMPLE. 
-		Drag & Drop of the Agent log file to the script shotcut. It takes the full path
+		Drag&Drop of the Agent log file to the script shotcut. It takes the full path
 
 	.INPUTS
 		Evault backup/restore/synch logs in text format

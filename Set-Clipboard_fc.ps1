@@ -5,6 +5,17 @@
 ## From Windows PowerShell Cookbook (O'Reilly)
 ## by Lee Holmes (http://www.leeholmes.com/guide)
 ##
+## on 09_01_2020
+## We are using .NET 4.0. We had the same problem, but after logging off the system, code used to work fine for some time.
+## Finally we found the alternative.
+## If you want to copy a string to the clipboard,
+## string data = "Copy This"
+## Till now I was using the following method
+## Clipboard.SetText(data);
+## It was failing again and again. Then I looked at other methods available to set text in the clipboard in Clipboard Class and tried the following:
+## Clipboard.SetDataObject(data);
+## And it worked :). I never had the issue again.
+## From <https://stackoverflow.com/questions/12769264/openclipboard-failed-when-copy-pasting-data-from-wpf-datagrid> 
 ##############################################################################
 Function Set-Clipboard {
 <#
@@ -55,7 +66,7 @@ end
         $clipText = ($input | Out-String -Stream) -join "`r`n"
 
         ## And finally set the clipboard text
-        [Windows.Clipboard]::SetText($clipText)
+        [Windows.Clipboard]::SetDataObject($clipText)
     }
 }
 }

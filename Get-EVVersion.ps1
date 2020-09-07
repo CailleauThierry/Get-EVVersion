@@ -1,6 +1,6 @@
 ﻿<#
 	.SYNOPSIS
-		Get-EVVersion10_11.ps1 based on Get-EVVersion10_10.ps1 which already handles Vault and Agent logs. Try to create parameters on the fly
+		Get-EVVersion.ps1 based on Get-EVVersion10_11.ps1 which already handles Vault and Agent logs. Still trying to create parameters on the fly
 	
 	.DESCRIPTION
 		
@@ -36,7 +36,7 @@ param (
 
 # set Clipboard
 
-. C:\posh\Set-Clipboard_fc.ps1
+. $HOME\Documents\WindowsPowerShell\Scripts\Get-EVVersion\Set-Clipboard_fc.ps1
 
 
 # $log1 for Get-Content of it $log1 = Get-Content C:\hsgTest\input\Backup-526ABFBB-48AC-29B4.LOG
@@ -55,7 +55,7 @@ $log1 = Get-Content $InputFile
 $Log.LogPath = $log1[1].PSPath
 $Log.LogName = $log1[1].PSChildName
 
-if (($log1[1]) -match '(^)((\d{2}\-\w{3}))')
+if (($log1[1]) -match '(^)((\d{2}\-\w{3})\s)')
 {
 # matching Agent 7.x log formating
 #Log object definition also defines in what order the objects will be displayed at the end

@@ -66,7 +66,7 @@ end
         $clipText = ($input | Out-String -Stream) -join "`r`n"
 
         ## And finally set the clipboard text
-        [Windows.Clipboard]::SetDataObject($clipText)
+        [Windows.Clipboard]::SetText($clipText)
     }
 }
 }

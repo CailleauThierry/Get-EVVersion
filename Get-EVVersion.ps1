@@ -83,7 +83,8 @@ $A8 = @{key0 = " cid=";key1 = '(cid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-
 $A9 = @{key0 = " vid=";key1 = '(vid=)(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "VaultGUID"}  				# since guid are a set format, I do not need to match the "," at the end
 
 } 
-elseif (($log1[1]) -match '(^)((\d{2}\-\w{3})-)') {
+elseif (($log1[1]) -match '(^)((\d{2}\-\w{3})-)') 
+{
 	# matching Vault 8.50 log formating
 	#Log object definition also defines in what order the objects will be displayed at the end
 	$Log | Add-Member NoteProperty LogEndTime "Could not find a valid time format for an Agent log in text format"
@@ -108,7 +109,7 @@ elseif (($log1[1]) -match '(^)((\d{2}\-\w{3})-)') {
 	$A7 = @{key0 = " tid=";key1 = '(tid= )(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "TaskGUID"}
 	$A8 = @{key0 = " cid=";key1 = '(cid= )(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "AgentGUID"}  				# there is no "," at the end of the first cid
 	$A9 = @{key0 = " vid=";key1 = '(vid= )(?<RegExMatch>(\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}))';key2 = "VaultGUID"}  				# since guid are a set format, I do not need to match the "," at the end
-	}
+}
 else
 {
 # matching Vault 7.11 log formating
